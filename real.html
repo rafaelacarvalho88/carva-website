@@ -7,361 +7,209 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --red:      #D93025;
-  --red-dk:   #B02218;
-  --red-pale: #FEF2F1;
-  --white:    #FFFFFF;
-  --off:      #F8F8F8;
-  --ink:      #111111;
-  --ink-md:   #3A3A3A;
-  --ink-soft: #6A6A6A;
-  --mist:     #E3E3E3;
-  --light:    #F2F2F2;
+  --red:#D93025; --red-dk:#B02218; --red-pale:#FEF2F1;
+  --white:#FFFFFF; --off:#F8F8F8; --ink:#111111;
+  --ink-md:#3A3A3A; --ink-soft:#6A6A6A; --mist:#E3E3E3; --light:#F2F2F2;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--white); color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);display:flex;justify-content:space-between;align-items:center;padding:0 52px;transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-wm{font-weight:800;font-size:1.2rem;letter-spacing:-0.025em;color:var(--ink);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:0.79rem;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
 
-/* ── NAV ── */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: 66px;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--mist);
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 52px;
-  transition: box-shadow .3s;
-}
-.nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.07); }
-.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-wm { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.025em; color: var(--ink); }
-.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
-.nav-links a { font-size: 0.79rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
-.nav-links a:hover { color: var(--ink); }
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:0;background:var(--off);border:1.5px solid var(--mist);border-radius:100px;overflow:hidden;padding:2px;}
+.lang-btn{background:none;border:none;padding:5px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;cursor:pointer;border-radius:100px;color:var(--ink-soft);transition:background .2s,color .2s;}
+.lang-btn.active{background:var(--red);color:white;}
 
-.btn-red {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: var(--red); color: #fff; border: none; border-radius: 100px;
-  padding: 11px 24px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.77rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-  cursor: pointer; text-decoration: none;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 14px rgba(217,48,37,.2);
-}
-.btn-red:hover { background: var(--red-dk); transform: translateY(-1px); box-shadow: 0 6px 22px rgba(217,48,37,.28); }
-.btn-red-lg { padding: 15px 32px; font-size: 0.82rem; box-shadow: 0 6px 20px rgba(217,48,37,.25); }
-.btn-red-lg:hover { box-shadow: 0 10px 32px rgba(217,48,37,.32); }
+.btn-red{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;border:none;border-radius:100px;padding:11px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.77rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 14px rgba(217,48,37,.2);}
+.btn-red:hover{background:var(--red-dk);transform:translateY(-1px);box-shadow:0 6px 22px rgba(217,48,37,.28);}
+.btn-red-lg{padding:15px 32px;font-size:0.82rem;box-shadow:0 6px 20px rgba(217,48,37,.25);}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--ink);border:1.5px solid var(--mist);border-radius:100px;padding:13px 26px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:border-color .2s;}
+.btn-outline:hover{border-color:var(--ink-soft);}
 
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: transparent; color: var(--ink);
-  border: 1.5px solid var(--mist); border-radius: 100px;
-  padding: 13px 26px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-  cursor: pointer; text-decoration: none; transition: border-color .2s;
-}
-.btn-outline:hover { border-color: var(--ink-soft); }
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:white;border-bottom:1px solid var(--mist);padding:20px 28px 28px;z-index:99;box-shadow:0 12px 32px rgba(0,0,0,.07);}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;font-size:0.95rem;font-weight:600;color:var(--ink-md);text-decoration:none;padding:11px 0;border-bottom:1px solid var(--off);}
+.mob-cta{display:block;margin-top:16px;background:var(--red);color:#fff;text-align:center;padding:14px;border-radius:100px;font-weight:800;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;border:none;cursor:pointer;width:100%;font-family:'Plus Jakarta Sans',sans-serif;}
+.mob-lang{display:flex;gap:8px;margin-top:16px;}
+.mob-lang-btn{flex:1;background:var(--off);border:1.5px solid var(--mist);border-radius:100px;padding:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;color:var(--ink-soft);transition:background .2s,color .2s;}
+.mob-lang-btn.active{background:var(--red);color:white;border-color:var(--red);}
 
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; background: none; border: none; padding: 4px;
-}
-.hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .3s; }
-.mobile-menu {
-  display: none; position: fixed; top: 66px; left: 0; right: 0;
-  background: white; border-bottom: 1px solid var(--mist);
-  padding: 20px 28px 28px; z-index: 99;
-  box-shadow: 0 12px 32px rgba(0,0,0,.07);
-}
-.mobile-menu.open { display: block; }
-.mobile-menu a { display: block; font-size: 0.95rem; font-weight: 600; color: var(--ink-md); text-decoration: none; padding: 11px 0; border-bottom: 1px solid var(--off); }
-.mob-cta { display: block; margin-top: 16px; background: var(--red); color: #fff; text-align: center; padding: 14px; border-radius: 100px; font-weight: 800; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; border: none; cursor: pointer; width: 100%; font-family: 'Plus Jakarta Sans', sans-serif; }
+/* HERO */
+.hero{min-height:100vh;padding:150px 52px 110px;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--white);}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(217,48,37,0.065) 1px,transparent 1px);background-size:38px 38px;pointer-events:none;}
+.hero-ring-1{position:absolute;top:-110px;right:-110px;width:560px;height:560px;border-radius:50%;border:88px solid rgba(217,48,37,0.048);pointer-events:none;}
+.hero-ring-2{position:absolute;top:30px;right:30px;width:320px;height:320px;border-radius:50%;border:52px solid rgba(217,48,37,0.03);pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:660px;}
+.hero-h1{font-weight:800;font-size:clamp(2.8rem,5.8vw,4.7rem);line-height:1.06;letter-spacing:-0.035em;color:var(--ink);margin-bottom:20px;}
+.hero-h1 em{font-style:normal;color:var(--red);}
+.hero-sub{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.9vw,1.42rem);color:var(--ink-soft);line-height:1.68;max-width:510px;margin-bottom:42px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:50px;}
+.hero-trust{display:flex;gap:22px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:0.74rem;font-weight:600;color:var(--ink-soft);}
+.trust-dot{width:18px;height:18px;background:var(--red-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; padding: 150px 52px 110px;
-  display: flex; align-items: center;
-  position: relative; overflow: hidden; background: var(--white);
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(217,48,37,0.065) 1px, transparent 1px);
-  background-size: 38px 38px; pointer-events: none;
-}
-.hero-ring-1 { position: absolute; top: -110px; right: -110px; width: 560px; height: 560px; border-radius: 50%; border: 88px solid rgba(217,48,37,0.048); pointer-events: none; }
-.hero-ring-2 { position: absolute; top: 30px; right: 30px; width: 320px; height: 320px; border-radius: 50%; border: 52px solid rgba(217,48,37,0.03); pointer-events: none; }
+/* SECTIONS */
+section{padding:100px 52px;}
+.si{max-width:1080px;margin:0 auto;}
+.eyebrow{font-size:0.59rem;font-weight:700;letter-spacing:0.45em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:12px;}
+.sh{font-weight:800;font-size:clamp(1.85rem,3.2vw,2.65rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:14px;}
+.sp{font-size:0.95rem;color:var(--ink-soft);line-height:1.88;max-width:500px;}
 
-.hero-inner { position: relative; z-index: 2; max-width: 660px; }
+/* WHY */
+.why{background:var(--off);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:14px;margin-top:52px;}
+.why-card{background:white;border:1.5px solid var(--mist);border-radius:18px;padding:34px 28px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.07);border-color:rgba(217,48,37,.2);}
+.wc-num{position:absolute;top:22px;right:22px;font-weight:800;font-size:3rem;color:rgba(217,48,37,.05);letter-spacing:-0.04em;line-height:1;}
+.wc-icon{width:50px;height:50px;background:var(--red-pale);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;}
+.wc-title{font-weight:800;font-size:1.06rem;color:var(--ink);margin-bottom:11px;letter-spacing:-0.01em;}
+.wc-body{font-size:0.83rem;color:var(--ink-soft);line-height:1.86;}
 
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--red-pale); border: 1px solid rgba(217,48,37,.14);
-  border-radius: 100px; padding: 7px 17px;
-  font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 34px;
-  opacity: 0; animation: up .7s .1s ease forwards;
-}
-.badge-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+/* CARRIERS */
+.carriers{background:white;}
+.carriers-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.carriers-left .sp{margin-bottom:36px;}
+.carrier-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.cl{background:var(--off);border:1.5px solid var(--mist);border-radius:14px;padding:18px 14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.78rem;color:var(--ink-soft);letter-spacing:0.02em;text-align:center;line-height:1.3;min-height:62px;transition:border-color .2s,color .2s,background .2s;}
+.cl:hover{border-color:rgba(217,48,37,.25);color:var(--red);background:var(--red-pale);}
+.carriers-right{background:var(--ink);border-radius:22px;padding:44px 38px;position:relative;overflow:hidden;}
+.carriers-right::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(217,48,37,.14);pointer-events:none;}
+.cr-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:28px;position:relative;z-index:1;}
+.cr-items{display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;}
+.cr-item{display:flex;align-items:flex-start;gap:12px;}
+.cr-check{width:22px;height:22px;border-radius:50%;background:rgba(217,48,37,.25);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
+.cr-check svg{width:11px;height:11px;}
+.cr-text{font-size:0.82rem;color:rgba(255,255,255,.65);line-height:1.65;}
+.cr-text strong{color:rgba(255,255,255,.9);font-weight:700;display:block;margin-bottom:2px;font-size:0.85rem;}
 
-.hero-h1 {
-  font-weight: 800; font-size: clamp(2.8rem, 5.8vw, 4.7rem);
-  line-height: 1.06; letter-spacing: -0.035em; color: var(--ink);
-  margin-bottom: 20px; opacity: 0; animation: up .8s .3s ease forwards;
-}
-.hero-h1 em { font-style: normal; color: var(--red); }
+/* BUSINESS */
+.business{background:var(--off);}
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:52px;}
+.biz-card{background:white;border:1.5px solid var(--mist);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.biz-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.biz-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07);border-color:rgba(217,48,37,.2);}
+.biz-card:hover::after{transform:scaleX(1);}
+.biz-icon{width:44px;height:44px;background:var(--red-pale);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:16px;}
+.biz-title{font-weight:800;font-size:0.95rem;color:var(--ink);margin-bottom:8px;}
+.biz-body{font-size:0.79rem;color:var(--ink-soft);line-height:1.84;}
 
-.hero-sub {
-  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
-  font-size: clamp(1.05rem, 1.9vw, 1.42rem);
-  color: var(--ink-soft); line-height: 1.68; max-width: 510px;
-  margin-bottom: 42px; opacity: 0; animation: up .7s .5s ease forwards;
-}
+/* SERVICES */
+.services{background:white;}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:52px;}
+.srv-card{background:var(--off);border:1.5px solid var(--mist);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;}
+.srv-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.srv-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07);background:white;border-color:rgba(217,48,37,.2);}
+.srv-card:hover::after{transform:scaleX(1);}
+.srv-icon{width:44px;height:44px;background:var(--red-pale);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px;}
+.srv-title{font-weight:800;font-size:0.95rem;color:var(--ink);margin-bottom:10px;}
+.srv-body{font-size:0.79rem;color:var(--ink-soft);line-height:1.84;}
 
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 50px; opacity: 0; animation: up .7s .7s ease forwards; }
+/* TESTIMONIALS */
+.testimonials{background:var(--ink);}
+.testimonials .eyebrow{color:rgba(217,48,37,.75);}
+.testimonials .sh{color:white;}
+.testimonials .sp{color:rgba(255,255,255,.42);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:14px;margin-top:52px;}
+.tc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:30px;transition:background .25s,border-color .25s;position:relative;overflow:hidden;}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),transparent);opacity:0;transition:opacity .3s;}
+.tc:hover{background:rgba(255,255,255,.07);border-color:rgba(217,48,37,.25);}
+.tc:hover::before{opacity:1;}
+.tc-stars{color:#F59E0B;font-size:0.78rem;letter-spacing:1.5px;margin-bottom:14px;}
+.tc-quote{font-family:'Fraunces',serif;font-style:italic;font-size:0.93rem;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:20px;}
+.tc-person{display:flex;align-items:center;gap:11px;}
+.tc-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.68rem;color:white;flex-shrink:0;}
+.tc-name{font-weight:700;font-size:0.77rem;color:rgba(255,255,255,.85);}
+.tc-loc{font-size:0.62rem;color:rgba(255,255,255,.32);margin-top:1px;}
 
-.hero-trust { display: flex; gap: 22px; flex-wrap: wrap; opacity: 0; animation: up .7s .9s ease forwards; }
-.trust-item { display: flex; align-items: center; gap: 7px; font-size: 0.74rem; font-weight: 600; color: var(--ink-soft); }
-.trust-dot { width: 18px; height: 18px; background: var(--red-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+/* CTA BAND */
+.cta-band{background:var(--red);padding:80px 52px;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none;}
+.cta-band::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(0,0,0,.06);pointer-events:none;}
+.cta-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:48px;flex-wrap:wrap;}
+.cta-h{font-weight:800;font-size:clamp(1.7rem,3vw,2.5rem);color:white;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;}
+.cta-p{font-size:0.93rem;color:rgba(255,255,255,.65);line-height:1.8;max-width:440px;}
+.cta-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
+.btn-white{display:inline-flex;align-items:center;gap:7px;background:white;color:var(--red);border:none;border-radius:100px;padding:15px 32px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.12);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.18);}
+.cta-lang-hint{font-size:0.68rem;color:rgba(255,255,255,.5);font-style:italic;text-align:right;}
 
-/* ── SECTIONS ── */
-section { padding: 100px 52px; }
-.si { max-width: 1080px; margin: 0 auto; }
-.eyebrow { font-size: 0.59rem; font-weight: 700; letter-spacing: 0.45em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 12px; }
-.sh { font-weight: 800; font-size: clamp(1.85rem, 3.2vw, 2.65rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 14px; }
-.sp { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.88; max-width: 500px; }
+/* FOOTER */
+footer{background:var(--ink);padding:52px 52px 32px;}
+.fi{max-width:1080px;margin:0 auto;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:28px;}
+.fb{max-width:240px;}
+.fb-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.fb-wm{font-weight:800;font-size:1.1rem;color:white;letter-spacing:-0.02em;}
+.fb-desc{font-size:0.78rem;color:rgba(255,255,255,.36);line-height:1.75;}
+.fc h4{font-size:0.59rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:14px;}
+.fc a{display:block;font-size:0.8rem;color:rgba(255,255,255,.46);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+.fc a:hover{color:white;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:0.69rem;color:rgba(255,255,255,.22);}
+.footer-lang{font-size:0.65rem;color:rgba(255,255,255,.22);font-style:italic;}
 
-/* ── WHY ── */
-.why { background: var(--off); }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); gap: 14px; margin-top: 52px; }
-.why-card {
-  background: white; border: 1.5px solid var(--mist); border-radius: 18px;
-  padding: 34px 28px; position: relative; overflow: hidden;
-  transition: transform .25s, box-shadow .25s, border-color .25s;
-}
-.why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.07); border-color: rgba(217,48,37,.2); }
-.wc-num { position: absolute; top: 22px; right: 22px; font-weight: 800; font-size: 3rem; color: rgba(217,48,37,.05); letter-spacing: -0.04em; line-height: 1; }
-.wc-icon { width: 50px; height: 50px; background: var(--red-pale); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
-.wc-title { font-weight: 800; font-size: 1.06rem; color: var(--ink); margin-bottom: 11px; letter-spacing: -0.01em; }
-.wc-body { font-size: 0.83rem; color: var(--ink-soft); line-height: 1.86; }
+/* MODAL */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{background:white;border-radius:24px;width:100%;max-width:460px;box-shadow:0 24px 80px rgba(0,0,0,.18);overflow:hidden;transform:translateY(20px) scale(.97);transition:transform .3s;}
+.overlay.open .modal{transform:translateY(0) scale(1);}
+.m-head{background:var(--ink);padding:26px 30px 22px;position:relative;}
+.m-topbar{height:3px;background:var(--red);position:absolute;top:0;left:0;right:0;}
+.m-logo{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.m-wm{font-weight:800;font-size:0.9rem;color:white;letter-spacing:-0.02em;}
+.m-title{font-weight:800;font-size:1.2rem;color:white;letter-spacing:-0.02em;margin-bottom:5px;}
+.m-sub{font-family:'Fraunces',serif;font-style:italic;font-size:0.85rem;color:rgba(255,255,255,.42);line-height:1.5;}
+.m-close{position:absolute;top:20px;right:22px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:0.95rem;transition:background .2s;font-family:inherit;}
+.m-close:hover{background:rgba(255,255,255,.18);color:white;}
+.m-body{padding:26px 30px 30px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:0.63rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+.req{color:var(--red);}
+.opt{font-size:0.6rem;font-weight:500;color:#bbb;letter-spacing:0;text-transform:none;}
+.fi-input,.fi-select{width:100%;padding:12px 14px;border:1.5px solid var(--mist);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--ink);background:white;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s;}
+.fi-input:focus,.fi-select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,48,37,.08);}
+.fi-input::placeholder{color:#c8c8c8;}
+.fi-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236A6A6A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
+.f-submit{width:100%;background:var(--red);color:white;border:none;border-radius:100px;padding:15px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;margin-top:6px;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(217,48,37,.25);}
+.f-submit:hover{background:var(--red-dk);transform:translateY(-1px);box-shadow:0 8px 24px rgba(217,48,37,.3);}
+.f-note{font-size:0.63rem;color:var(--ink-soft);text-align:center;margin-top:10px;line-height:1.6;}
+.m-thanks{display:none;padding:52px 30px;text-align:center;}
+.ty-icon{width:64px;height:64px;background:var(--red-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 20px;}
+.ty-title{font-weight:800;font-size:1.3rem;color:var(--ink);margin-bottom:10px;letter-spacing:-0.02em;}
+.ty-sub{font-family:'Fraunces',serif;font-style:italic;font-size:0.95rem;color:var(--ink-soft);line-height:1.65;}
 
-/* ── CARRIERS ── */
-.carriers { background: white; }
-.carriers-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.carriers-left { }
-.carriers-left .sp { margin-bottom: 36px; }
+.reveal{opacity:1;transform:none;}
 
-.carrier-logos {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-}
-.cl {
-  background: var(--off); border: 1.5px solid var(--mist); border-radius: 14px;
-  padding: 18px 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 0.78rem; color: var(--ink-soft);
-  letter-spacing: 0.02em; text-align: center; line-height: 1.3;
-  min-height: 62px;
-  transition: border-color .2s, color .2s, background .2s;
-}
-.cl:hover { border-color: rgba(217,48,37,.25); color: var(--red); background: var(--red-pale); }
-
-.carriers-right {
-  background: var(--ink); border-radius: 22px; padding: 44px 38px;
-  position: relative; overflow: hidden;
-}
-.carriers-right::before {
-  content: ''; position: absolute; top: -60px; right: -60px;
-  width: 260px; height: 260px; border-radius: 50%;
-  background: rgba(217,48,37,.14); pointer-events: none;
-}
-.cr-quote {
-  font-family: 'Fraunces', serif; font-style: italic; font-size: 1.18rem;
-  color: rgba(255,255,255,.85); line-height: 1.65; margin-bottom: 28px;
-  position: relative; z-index: 1;
-}
-.cr-items { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 1; }
-.cr-item { display: flex; align-items: flex-start; gap: 12px; }
-.cr-check {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(217,48,37,.25); flex-shrink: 0; margin-top: 1px;
-  display: flex; align-items: center; justify-content: center;
-}
-.cr-check svg { width: 11px; height: 11px; }
-.cr-text { font-size: 0.82rem; color: rgba(255,255,255,.65); line-height: 1.65; }
-.cr-text strong { color: rgba(255,255,255,.9); font-weight: 700; display: block; margin-bottom: 2px; font-size: 0.85rem; }
-
-/* ── BUSINESS ── */
-.business { background: var(--off); }
-.biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 52px; }
-.biz-card {
-  background: white; border: 1.5px solid var(--mist); border-radius: 16px;
-  padding: 28px 24px; position: relative; overflow: hidden;
-  transition: transform .2s, box-shadow .2s, border-color .2s;
-}
-.biz-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .3s;
-}
-.biz-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.07); border-color: rgba(217,48,37,.2); }
-.biz-card:hover::after { transform: scaleX(1); }
-.biz-icon { width: 44px; height: 44px; background: var(--red-pale); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 16px; }
-.biz-title { font-weight: 800; font-size: 0.95rem; color: var(--ink); margin-bottom: 8px; }
-.biz-body { font-size: 0.79rem; color: var(--ink-soft); line-height: 1.84; }
-
-/* ── SERVICES ── */
-.services { background: white; }
-.srv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 52px; }
-.srv-card {
-  background: var(--off); border: 1.5px solid var(--mist); border-radius: 16px;
-  padding: 28px 24px; position: relative; overflow: hidden;
-  transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
-}
-.srv-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .3s;
-}
-.srv-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.07); background: white; border-color: rgba(217,48,37,.2); }
-.srv-card:hover::after { transform: scaleX(1); }
-.srv-icon { width: 44px; height: 44px; background: var(--red-pale); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; }
-.srv-title { font-weight: 800; font-size: 0.95rem; color: var(--ink); margin-bottom: 10px; }
-.srv-body { font-size: 0.79rem; color: var(--ink-soft); line-height: 1.84; }
-
-/* ── TESTIMONIALS ── */
-.testimonials { background: var(--ink); }
-.testimonials .eyebrow { color: rgba(217,48,37,.75); }
-.testimonials .sh { color: white; }
-.testimonials .sp { color: rgba(255,255,255,.42); }
-.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 14px; margin-top: 52px; }
-.tc {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 18px; padding: 30px;
-  transition: background .25s, border-color .25s; position: relative; overflow: hidden;
-}
-.tc::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--red), transparent); opacity: 0; transition: opacity .3s;
-}
-.tc:hover { background: rgba(255,255,255,.07); border-color: rgba(217,48,37,.25); }
-.tc:hover::before { opacity: 1; }
-.tc-stars { color: #F59E0B; font-size: 0.78rem; letter-spacing: 1.5px; margin-bottom: 14px; }
-.tc-quote { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.93rem; color: rgba(255,255,255,.8); line-height: 1.65; margin-bottom: 20px; }
-.tc-person { display: flex; align-items: center; gap: 11px; }
-.tc-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.68rem; color: white; flex-shrink: 0; }
-.tc-name { font-weight: 700; font-size: 0.77rem; color: rgba(255,255,255,.85); }
-.tc-loc { font-size: 0.62rem; color: rgba(255,255,255,.32); margin-top: 1px; }
-
-/* ── CTA BAND ── */
-.cta-band {
-  background: var(--red); padding: 80px 52px;
-  position: relative; overflow: hidden;
-}
-.cta-band::before { content: ''; position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: rgba(255,255,255,.07); pointer-events: none; }
-.cta-band::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(0,0,0,.06); pointer-events: none; }
-.cta-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 48px; flex-wrap: wrap; }
-.cta-text {}
-.cta-h { font-weight: 800; font-size: clamp(1.7rem, 3vw, 2.5rem); color: white; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 10px; }
-.cta-p { font-size: 0.93rem; color: rgba(255,255,255,.65); line-height: 1.8; max-width: 440px; }
-.cta-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; flex-shrink: 0; }
-.btn-white { display: inline-flex; align-items: center; gap: 7px; background: white; color: var(--red); border: none; border-radius: 100px; padding: 15px 32px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.18); }
-.cta-lang-hint { font-size: 0.68rem; color: rgba(255,255,255,.38); font-style: italic; text-align: right; }
-
-/* ── FOOTER ── */
-footer { background: var(--ink); padding: 52px 52px 32px; }
-.fi { max-width: 1080px; margin: 0 auto; }
-.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 28px; }
-.fb { max-width: 240px; }
-.fb-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.fb-wm { font-weight: 800; font-size: 1.1rem; color: white; letter-spacing: -0.02em; }
-.fb-desc { font-size: 0.78rem; color: rgba(255,255,255,.36); line-height: 1.75; }
-.fc h4 { font-size: 0.59rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 14px; }
-.fc a { display: block; font-size: 0.8rem; color: rgba(255,255,255,.46); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
-.fc a:hover { color: white; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-.footer-bottom p { font-size: 0.69rem; color: rgba(255,255,255,.22); }
-.footer-lang { font-size: 0.65rem; color: rgba(255,255,255,.22); font-style: italic; }
-
-/* ── MODAL ── */
-.overlay {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(10,10,10,.5); backdrop-filter: blur(6px);
-  display: flex; align-items: center; justify-content: center; padding: 24px;
-  opacity: 0; pointer-events: none; transition: opacity .25s;
-}
-.overlay.open { opacity: 1; pointer-events: all; }
-.modal {
-  background: white; border-radius: 24px; width: 100%; max-width: 460px;
-  box-shadow: 0 24px 80px rgba(0,0,0,.18); overflow: hidden;
-  transform: translateY(20px) scale(.97); transition: transform .3s;
-}
-.overlay.open .modal { transform: translateY(0) scale(1); }
-.m-head { background: var(--ink); padding: 26px 30px 22px; position: relative; }
-.m-topbar { height: 3px; background: var(--red); position: absolute; top: 0; left: 0; right: 0; }
-.m-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; }
-.m-wm { font-weight: 800; font-size: 0.9rem; color: white; letter-spacing: -0.02em; }
-.m-title { font-weight: 800; font-size: 1.2rem; color: white; letter-spacing: -0.02em; margin-bottom: 5px; }
-.m-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,.42); line-height: 1.5; }
-.m-close { position: absolute; top: 20px; right: 22px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.1); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.55); font-size: 0.95rem; transition: background .2s; font-family: inherit; }
-.m-close:hover { background: rgba(255,255,255,.18); color: white; }
-.m-body { padding: 26px 30px 30px; }
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.fg { margin-bottom: 14px; }
-.fl { display: block; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
-.req { color: var(--red); }
-.opt { font-size: 0.6rem; font-weight: 500; color: #bbb; letter-spacing: 0; text-transform: none; }
-.fi-input, .fi-select {
-  width: 100%; padding: 12px 14px; border: 1.5px solid var(--mist); border-radius: 10px;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; color: var(--ink);
-  background: white; outline: none; -webkit-appearance: none; appearance: none;
-  transition: border-color .2s, box-shadow .2s;
-}
-.fi-input:focus, .fi-select:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(217,48,37,.08); }
-.fi-input::placeholder { color: #c8c8c8; }
-.fi-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236A6A6A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
-.f-submit { width: 100%; background: var(--red); color: white; border: none; border-radius: 100px; padding: 15px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; margin-top: 6px; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 4px 16px rgba(217,48,37,.25); }
-.f-submit:hover { background: var(--red-dk); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(217,48,37,.3); }
-.f-note { font-size: 0.63rem; color: var(--ink-soft); text-align: center; margin-top: 10px; line-height: 1.6; }
-.m-thanks { display: none; padding: 52px 30px; text-align: center; }
-.ty-icon { width: 64px; height: 64px; background: var(--red-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 20px; }
-.ty-title { font-weight: 800; font-size: 1.3rem; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; }
-.ty-sub { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65; }
-
-/* ── REVEAL ── */
-.reveal { opacity: 1; transform: none; }
-.reveal.visible { opacity: 1; transform: none; }
-.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
-
-@keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px) {
-  .carriers-inner { grid-template-columns: 1fr; gap: 40px; }
-  .cta-actions { align-items: flex-start; }
-}
-@media(max-width:780px) {
-  .nav { padding: 0 20px; } .nav-links { display: none; } .hamburger { display: flex; }
-  section { padding: 72px 24px; }
-  .hero { padding: 124px 24px 88px; }
-  .cta-band { padding: 72px 24px; }
-  footer { padding: 44px 24px 28px; }
-  .f-row { grid-template-columns: 1fr; }
-  .carrier-logos { grid-template-columns: repeat(2, 1fr); }
+@media(max-width:900px){.carriers-inner{grid-template-columns:1fr;gap:40px;}.cta-actions{align-items:flex-start;}}
+@media(max-width:780px){
+  .nav{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}
+  section{padding:72px 24px;}.hero{padding:124px 24px 88px;}.cta-band{padding:72px 24px;}
+  footer{padding:44px 24px 28px;}.f-row{grid-template-columns:1fr;}.carrier-logos{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav class="nav" id="navbar">
   <a href="#" class="nav-brand">
-    <svg width="42" height="42" viewBox="0 0 72 72" fill="none">
-      <rect x="8" y="6" width="56" height="56" rx="16" fill="#FEF2F1"/>
-      <path d="M36 52C36 52 16 40 16 27C16 21 21 17 26 17C30 17 33.5 19.5 36 23C38.5 19.5 42 17 46 17C51 17 56 21 56 27C56 40 36 52 36 52Z" fill="#D93025"/>
-      <path d="M28 30L33 36L44 24" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="54" height="54" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 10px rgba(217,48,37,0.28))">
+      <rect x="6" y="4" width="60" height="60" rx="17" fill="#FEF2F1"/>
+      <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.15)" stroke-width="1.5"/>
+      <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+      <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div style="display:flex;flex-direction:column;line-height:1.1">
       <span class="nav-wm">CARVA</span>
@@ -369,11 +217,17 @@ footer { background: var(--ink); padding: 52px 52px 32px; }
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#why">Why CARVA</a></li>
-    <li><a href="#services">Coverage</a></li>
-    <li><a href="#business">For Business</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><button class="btn-red" onclick="openModal()">Get a Free Quote</button></li>
+    <li><a href="#why" data-en="Why CARVA" data-pt="Por que CARVA">Why CARVA</a></li>
+    <li><a href="#business" data-en="For Business" data-pt="Para Empresas">For Business</a></li>
+    <li><a href="#services" data-en="Personal Coverage" data-pt="Cobertura Pessoal">Personal Coverage</a></li>
+    <li><a href="#reviews" data-en="Reviews" data-pt="Avaliações">Reviews</a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇺🇸 EN</button>
+        <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">🇧🇷 PT</button>
+      </div>
+    </li>
+    <li><button class="btn-red" onclick="openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis">Get a Free Quote</button></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -381,147 +235,110 @@ footer { background: var(--ink); padding: 52px 52px 32px; }
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#why" onclick="toggleMenu()">Why CARVA</a>
-  <a href="#services" onclick="toggleMenu()">Coverage</a>
-  <a href="#business" onclick="toggleMenu()">For Business</a>
-  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
-  <button class="mob-cta" onclick="toggleMenu();openModal()">Get a Free Quote</button>
+  <a href="#why" onclick="toggleMenu()" data-en="Why CARVA" data-pt="Por que CARVA">Why CARVA</a>
+  <a href="#business" onclick="toggleMenu()" data-en="For Business" data-pt="Para Empresas">For Business</a>
+  <a href="#services" onclick="toggleMenu()" data-en="Personal Coverage" data-pt="Cobertura Pessoal">Personal Coverage</a>
+  <a href="#reviews" onclick="toggleMenu()" data-en="Reviews" data-pt="Avaliações">Reviews</a>
+  <div class="mob-lang">
+    <button class="mob-lang-btn active" id="mob-btn-en" onclick="setLang('en')">🇺🇸 English</button>
+    <button class="mob-lang-btn" id="mob-btn-pt" onclick="setLang('pt')">🇧🇷 Português</button>
+  </div>
+  <button class="mob-cta" onclick="toggleMenu();openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis">Get a Free Quote</button>
 </div>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-ring-1"></div>
   <div class="hero-ring-2"></div>
   <div class="hero-inner">
-    <h1 class="hero-h1">
-      The right coverage.<br>
-      The <em>best</em> rate.<br>
-      Someone you can call.
+    <h1 class="hero-h1" data-en="The right coverage.<br>The <em>best</em> rate.<br>Someone you can call." data-pt="A cobertura certa.<br>O melhor <em>preço</em>.<br>Alguém com quem contar.">
+      The right coverage.<br>The <em>best</em> rate.<br>Someone you can call.
     </h1>
-
-    <p class="hero-sub">
+    <p class="hero-sub" data-en='"CARVA shops the biggest carriers in the country on your behalf — and stays in your corner long after the policy is signed."' data-pt='"A CARVA pesquisa as maiores seguradoras do país para você — e permanece ao seu lado muito depois da apólice ser assinada."'>
       "CARVA shops the biggest carriers in the country on your behalf — and stays in your corner long after the policy is signed."
     </p>
-
     <div class="hero-ctas">
-      <button class="btn-red btn-red-lg" onclick="openModal()">
+      <button class="btn-red btn-red-lg" onclick="openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis">
         Get a Free Quote
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
-      <a href="#why" class="btn-outline">How We Work</a>
+      <a href="#why" class="btn-outline" data-en="How We Work" data-pt="Como Trabalhamos">How We Work</a>
     </div>
-
     <div class="hero-trust">
       <div class="trust-item">
-        <div class="trust-dot">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-        </div>
-        Top-rated carriers
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Top-rated carriers" data-pt="Seguradoras top">Top-rated carriers</span>
       </div>
       <div class="trust-item">
-        <div class="trust-dot">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-        </div>
-        Individuals &amp; businesses
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Individuals &amp; businesses" data-pt="Pessoas e empresas">Individuals &amp; businesses</span>
       </div>
       <div class="trust-item">
-        <div class="trust-dot">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-        </div>
-        Claims advocacy
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Claims advocacy" data-pt="Apoio em sinistros">Claims advocacy</span>
       </div>
-      <div class="trust-item">
-        <span style="font-size:1rem;line-height:1">🇧🇷</span>
-        Falamos Português
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══ WHY CARVA ══ -->
+<!-- WHY CARVA -->
 <section class="why" id="why">
   <div class="si">
-    <span class="eyebrow reveal">Why CARVA</span>
-    <h2 class="sh reveal d1">An agent who works<br>for you — not the carrier.</h2>
-    <p class="sp reveal d2">Most agents represent one company. CARVA is independent, which means we shop across the market to find the right fit for your specific situation — and we stay with you long after the sale.</p>
-
+    <span class="eyebrow reveal" data-en="Why CARVA" data-pt="Por que CARVA">Why CARVA</span>
+    <h2 class="sh reveal" data-en="An agent who works<br>for you — not the carrier." data-pt="Um corretor que trabalha<br>para você — não para a seguradora.">An agent who works<br>for you — not the carrier.</h2>
+    <p class="sp reveal" data-en="Most agents represent one company. CARVA is independent, which means we shop across the market to find the right fit for your specific situation — and we stay with you long after the sale." data-pt="A maioria dos corretores representa uma única empresa. A CARVA é independente, o que significa que pesquisamos o mercado para encontrar a melhor opção para a sua situação — e continuamos com você muito depois da venda.">Most agents represent one company. CARVA is independent, which means we shop across the market to find the right fit for your specific situation — and we stay with you long after the sale.</p>
     <div class="why-grid">
-      <div class="why-card reveal d1">
+      <div class="why-card reveal">
         <div class="wc-num">01</div>
-        <div class="wc-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </div>
-        <p class="wc-title">We shop the market for you.</p>
-        <p class="wc-body">As an independent agent, CARVA has relationships with the nation's largest and most trusted carriers. We compare options across all of them to find the best combination of price and coverage for your exact needs.</p>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <p class="wc-title" data-en="We shop the market for you." data-pt="Pesquisamos o mercado para você.">We shop the market for you.</p>
+        <p class="wc-body" data-en="As an independent agent, CARVA has relationships with the nation's largest and most trusted carriers. We compare options across all of them to find the best combination of price and coverage for your exact needs." data-pt="Como corretor independente, a CARVA tem relações com as maiores e mais confiáveis seguradoras do país. Comparamos todas as opções para encontrar a melhor combinação de preço e cobertura para suas necessidades.">As an independent agent, CARVA has relationships with the nation's largest and most trusted carriers. We compare options across all of them to find the best combination of price and coverage for your exact needs.</p>
       </div>
-      <div class="why-card reveal d2">
+      <div class="why-card reveal">
         <div class="wc-num">02</div>
-        <div class="wc-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <p class="wc-title">We advise you honestly.</p>
-        <p class="wc-body">We tell you what you need — and what you don't. Our goal is a relationship that lasts for years, which means your best interest always comes first. No upsells, no pressure, no fine print surprises.</p>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="wc-title" data-en="We advise you honestly." data-pt="Aconselhamos com honestidade.">We advise you honestly.</p>
+        <p class="wc-body" data-en="We tell you what you need — and what you don't. Our goal is a relationship that lasts for years, which means your best interest always comes first. No upsells, no pressure, no fine print surprises." data-pt="Dizemos o que você precisa — e o que não precisa. Nosso objetivo é um relacionamento duradouro, o que significa que seus interesses sempre vêm em primeiro lugar. Sem vendas forçadas, sem pressão, sem surpresas.">We tell you what you need — and what you don't. Our goal is a relationship that lasts for years, which means your best interest always comes first. No upsells, no pressure, no fine print surprises.</p>
       </div>
-      <div class="why-card reveal d3">
+      <div class="why-card reveal">
         <div class="wc-num">03</div>
-        <div class="wc-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-        </div>
-        <p class="wc-title">We're there for every claim.</p>
-        <p class="wc-body">Most agents disappear after the sale. When something goes wrong, CARVA answers the phone — helps you file, advocates with the carrier on your behalf, and stays until the situation is fully resolved.</p>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <p class="wc-title" data-en="We're there for every claim." data-pt="Estamos com você em cada sinistro.">We're there for every claim.</p>
+        <p class="wc-body" data-en="Most agents disappear after the sale. When something goes wrong, CARVA answers the phone — helps you file, advocates with the carrier on your behalf, and stays until the situation is fully resolved." data-pt="A maioria dos corretores some após a venda. Quando algo dá errado, a CARVA atende o telefone — ajuda a registrar o sinistro, defende seus direitos junto à seguradora e permanece até a resolução completa.">Most agents disappear after the sale. When something goes wrong, CARVA answers the phone — helps you file, advocates with the carrier on your behalf, and stays until the situation is fully resolved.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CARRIERS ══ -->
+<!-- CARRIERS -->
 <section class="carriers" id="carriers">
   <div class="si">
     <div class="carriers-inner">
       <div class="carriers-left">
-        <span class="eyebrow reveal">Our Carrier Network</span>
-        <h2 class="sh reveal d1">We work with the biggest names — so you get the best deal.</h2>
-        <p class="sp reveal d2">CARVA maintains close relationships with the top-rated carriers in the United States. That access means real competition for your business — and real savings for you.</p>
-
-        <div class="carrier-logos reveal d3">
-          <div class="cl">Progressive</div>
-          <div class="cl">Travelers</div>
-          <div class="cl">Nationwide</div>
-          <div class="cl">Liberty Mutual</div>
-          <div class="cl">Allstate</div>
-          <div class="cl">Hartford</div>
-          <div class="cl">Chubb</div>
-          <div class="cl">Safeco</div>
-          <div class="cl">+ More</div>
+        <span class="eyebrow reveal" data-en="Our Carrier Network" data-pt="Nossa Rede de Seguradoras">Our Carrier Network</span>
+        <h2 class="sh reveal" data-en="We work with the biggest names — so you get the best deal." data-pt="Trabalhamos com os maiores nomes — para você ter o melhor negócio.">We work with the biggest names — so you get the best deal.</h2>
+        <p class="sp reveal" data-en="CARVA maintains close relationships with the top-rated carriers in the United States. That access means real competition for your business — and real savings for you." data-pt="A CARVA mantém relações próximas com as seguradoras mais bem avaliadas dos Estados Unidos. Esse acesso significa concorrência real pelo seu negócio — e economia real para você.">CARVA maintains close relationships with the top-rated carriers in the United States. That access means real competition for your business — and real savings for you.</p>
+        <div class="carrier-logos reveal">
+          <div class="cl">Progressive</div><div class="cl">Travelers</div><div class="cl">Nationwide</div>
+          <div class="cl">Liberty Mutual</div><div class="cl">Allstate</div><div class="cl">Hartford</div>
+          <div class="cl">Chubb</div><div class="cl">Safeco</div><div class="cl">+ More</div>
         </div>
       </div>
-
-      <div class="carriers-right reveal d2">
-        <p class="cr-quote">"Having one agent who knows all the carriers — and knows you — is how you stop overpaying and start being protected."</p>
+      <div class="carriers-right reveal">
+        <p class="cr-quote" data-en='"Having one agent who knows all the carriers — and knows you — is how you stop overpaying and start being protected."' data-pt='"Ter um corretor que conhece todas as seguradoras — e conhece você — é como você para de pagar demais e começa a ser protegido de verdade."'>"Having one agent who knows all the carriers — and knows you — is how you stop overpaying and start being protected."</p>
         <div class="cr-items">
           <div class="cr-item">
-            <div class="cr-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <p class="cr-text"><strong>Competitive rates, every year</strong>We re-shop your coverage at every renewal — no loyalty penalty for staying with CARVA.</p>
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="Competitive rates, every year" data-pt="Preços competitivos, todo ano">Competitive rates, every year</strong><span data-en="We re-shop your coverage at every renewal — no loyalty penalty for staying with CARVA." data-pt="Pesquisamos sua cobertura em cada renovação — sem penalidade por fidelidade.">We re-shop your coverage at every renewal — no loyalty penalty for staying with CARVA.</span></p>
           </div>
           <div class="cr-item">
-            <div class="cr-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <p class="cr-text"><strong>Coverage that actually fits</strong>We match the right carrier to your specific risk profile — not the one that pays the highest commission.</p>
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="Coverage that actually fits" data-pt="Cobertura que realmente serve">Coverage that actually fits</strong><span data-en="We match the right carrier to your specific risk profile — not the one that pays the highest commission." data-pt="Combinamos a seguradora certa ao seu perfil de risco — não a que paga a maior comissão.">We match the right carrier to your specific risk profile — not the one that pays the highest commission.</span></p>
           </div>
           <div class="cr-item">
-            <div class="cr-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <p class="cr-text"><strong>One point of contact, always</strong>You call CARVA. We handle the carrier. No call centers, no hold music, no strangers.</p>
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="One point of contact, always" data-pt="Um único contato, sempre">One point of contact, always</strong><span data-en="You call CARVA. We handle the carrier. No call centers, no hold music, no strangers." data-pt="Você liga para a CARVA. Nós cuidamos da seguradora. Sem call centers, sem música de espera, sem estranhos.">You call CARVA. We handle the carrier. No call centers, no hold music, no strangers.</span></p>
           </div>
         </div>
       </div>
@@ -529,77 +346,50 @@ footer { background: var(--ink); padding: 52px 52px 32px; }
   </div>
 </section>
 
-<!-- ══ FOR BUSINESS ══ -->
+<!-- FOR BUSINESS -->
 <section class="business" id="business">
   <div class="si">
-    <span class="eyebrow reveal">For Business Owners</span>
-    <h2 class="sh reveal d1">Your business deserves<br>an agent who takes it seriously.</h2>
-    <p class="sp reveal d2">Running a business is hard enough. CARVA makes sure the coverage side is handled — with the right policies, the right carriers, and someone who actually understands what you've built.</p>
-
+    <span class="eyebrow reveal" data-en="For Business Owners" data-pt="Para Empresários">For Business Owners</span>
+    <h2 class="sh reveal" data-en="Your business deserves<br>an agent who takes it seriously." data-pt="Seu negócio merece<br>um corretor que leva isso a sério.">Your business deserves<br>an agent who takes it seriously.</h2>
+    <p class="sp reveal" data-en="Running a business is hard enough. CARVA makes sure the coverage side is handled — with the right policies, the right carriers, and someone who actually understands what you've built." data-pt="Administrar um negócio já é difícil. A CARVA garante que a parte dos seguros esteja resolvida — com as apólices certas, as seguradoras certas e alguém que entende o que você construiu.">Running a business is hard enough. CARVA makes sure the coverage side is handled — with the right policies, the right carriers, and someone who actually understands what you've built.</p>
     <div class="biz-grid">
-      <div class="biz-card reveal d1">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <p class="biz-title">General Liability</p>
-        <p class="biz-body">Protects your business from third-party claims for property damage, bodily injury, and more. The foundation of every solid business policy.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="biz-title" data-en="General Liability" data-pt="Responsabilidade Civil">General Liability</p>
+        <p class="biz-body" data-en="Protects your business from third-party claims for property damage, bodily injury, and more. The foundation of every solid business policy." data-pt="Protege seu negócio contra reclamações de terceiros por danos materiais, lesões corporais e mais. A base de toda apólice empresarial sólida.">Protects your business from third-party claims for property damage, bodily injury, and more. The foundation of every solid business policy.</p>
       </div>
-      <div class="biz-card reveal d2">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
-          </svg>
-        </div>
-        <p class="biz-title">Business Owner's Policy</p>
-        <p class="biz-body">A BOP bundles general liability and commercial property into one smart, cost-effective package — ideal for small and mid-size businesses.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <p class="biz-title" data-en="Business Owner's Policy" data-pt="Apólice do Empresário (BOP)">Business Owner's Policy</p>
+        <p class="biz-body" data-en="A BOP bundles general liability and commercial property into one smart, cost-effective package — ideal for small and mid-size businesses." data-pt="O BOP combina responsabilidade civil e patrimônio comercial em um pacote inteligente e econômico — ideal para pequenas e médias empresas.">A BOP bundles general liability and commercial property into one smart, cost-effective package — ideal for small and mid-size businesses.</p>
       </div>
-      <div class="biz-card reveal d3">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
-        <p class="biz-title">Workers' Compensation</p>
-        <p class="biz-body">Protects your employees and your business when someone gets hurt on the job. Required in most states — and we make sure you're fully compliant.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p class="biz-title" data-en="Workers' Compensation" data-pt="Seguro de Acidentes de Trabalho">Workers' Compensation</p>
+        <p class="biz-body" data-en="Protects your employees and your business when someone gets hurt on the job. Required in most states — and we make sure you're fully compliant." data-pt="Protege seus funcionários e seu negócio quando alguém se machuca no trabalho. Exigido na maioria dos estados — e garantimos que você esteja em total conformidade.">Protects your employees and your business when someone gets hurt on the job. Required in most states — and we make sure you're fully compliant.</p>
       </div>
-      <div class="biz-card reveal d4">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
-        </div>
-        <p class="biz-title">Commercial Auto</p>
-        <p class="biz-body">If your business uses vehicles — yours or your employees' — a personal auto policy won't cover it. We make sure your fleet is properly protected.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <p class="biz-title" data-en="Commercial Auto" data-pt="Auto Comercial">Commercial Auto</p>
+        <p class="biz-body" data-en="If your business uses vehicles — yours or your employees' — a personal auto policy won't cover it. We make sure your fleet is properly protected." data-pt="Se seu negócio usa veículos — seus ou dos funcionários — uma apólice pessoal não cobre. Garantimos que sua frota esteja devidamente protegida.">If your business uses vehicles — yours or your employees' — a personal auto policy won't cover it. We make sure your fleet is properly protected.</p>
       </div>
-      <div class="biz-card reveal d1">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-          </svg>
-        </div>
-        <p class="biz-title">Professional Liability</p>
-        <p class="biz-body">Also known as E&amp;O insurance. Essential for service-based businesses, consultants, and anyone whose advice or work could be questioned.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <p class="biz-title" data-en="Professional Liability" data-pt="Responsabilidade Profissional">Professional Liability</p>
+        <p class="biz-body" data-en="Also known as E&amp;O insurance. Essential for service-based businesses, consultants, and anyone whose advice or work could be questioned." data-pt="Também conhecido como seguro E&amp;O. Essencial para empresas de serviços, consultores e qualquer pessoa cujo conselho ou trabalho possa ser questionado.">Also known as E&amp;O insurance. Essential for service-based businesses, consultants, and anyone whose advice or work could be questioned.</p>
       </div>
-      <div class="biz-card reveal d2">
-        <div class="biz-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
-          </svg>
-        </div>
-        <p class="biz-title">Commercial Umbrella</p>
-        <p class="biz-body">When the unexpected is bigger than your base policy, umbrella coverage steps in. A smart, affordable layer of extra protection for your business assets.</p>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <p class="biz-title" data-en="Commercial Umbrella" data-pt="Cobertura Guarda-Chuva Comercial">Commercial Umbrella</p>
+        <p class="biz-body" data-en="When the unexpected is bigger than your base policy, umbrella coverage steps in. A smart, affordable layer of extra protection for your business assets." data-pt="Quando o inesperado é maior que sua apólice base, a cobertura guarda-chuva entra em ação. Uma camada inteligente e acessível de proteção extra para seus ativos empresariais.">When the unexpected is bigger than your base policy, umbrella coverage steps in. A smart, affordable layer of extra protection for your business assets.</p>
       </div>
     </div>
-
-    <!-- Business trust strip -->
     <div style="margin-top:44px;background:var(--ink);border-radius:18px;padding:36px 40px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;" class="reveal">
       <div style="flex:1;min-width:220px">
-        <p style="font-weight:800;font-size:1rem;color:white;margin-bottom:6px;letter-spacing:-0.01em">We've seen what happens when business owners are underinsured.</p>
-        <p style="font-size:0.82rem;color:rgba(255,255,255,.45);line-height:1.75">CARVA's job is to make sure that never happens to you. We review your coverage every year and adjust as your business grows.</p>
+        <p style="font-weight:800;font-size:1rem;color:white;margin-bottom:6px;letter-spacing:-0.01em" data-en="We've seen what happens when business owners are underinsured." data-pt="Já vimos o que acontece quando empresários estão mal segurados.">We've seen what happens when business owners are underinsured.</p>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,.45);line-height:1.75" data-en="CARVA's job is to make sure that never happens to you. We review your coverage every year and adjust as your business grows." data-pt="O trabalho da CARVA é garantir que isso nunca aconteça com você. Revisamos sua cobertura todo ano e ajustamos conforme seu negócio cresce.">CARVA's job is to make sure that never happens to you. We review your coverage every year and adjust as your business grows.</p>
       </div>
-      <button class="btn-white" onclick="openModal()" style="background:var(--red);color:white;box-shadow:0 4px 16px rgba(217,48,37,.3);flex-shrink:0">
+      <button class="btn-white" onclick="openModal()" style="background:var(--red);color:white;box-shadow:0 4px 16px rgba(217,48,37,.3);flex-shrink:0" data-en="Talk to an Agent" data-pt="Falar com um Corretor">
         Talk to an Agent
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
@@ -607,238 +397,255 @@ footer { background: var(--ink); padding: 52px 52px 32px; }
   </div>
 </section>
 
-<!-- ══ PERSONAL COVERAGE ══ -->
+<!-- PERSONAL COVERAGE -->
 <section class="services" id="services">
   <div class="si">
-    <span class="eyebrow reveal">Personal Coverage</span>
-    <h2 class="sh reveal d1">Protecting you and<br>everyone you love.</h2>
-    <p class="sp reveal d2">From your car to your home to your family's future — CARVA finds the right coverage at the right price, and explains every detail before you sign a thing.</p>
-
+    <span class="eyebrow reveal" data-en="Personal Coverage" data-pt="Cobertura Pessoal">Personal Coverage</span>
+    <h2 class="sh reveal" data-en="Protecting you and<br>everyone you love." data-pt="Protegendo você e<br>todos que você ama.">Protecting you and<br>everyone you love.</h2>
+    <p class="sp reveal" data-en="From your car to your home to your family's future — CARVA finds the right coverage at the right price, and explains every detail before you sign a thing." data-pt="Do seu carro à sua casa ao futuro da sua família — a CARVA encontra a cobertura certa pelo preço certo, e explica cada detalhe antes de você assinar qualquer coisa.">From your car to your home to your family's future — CARVA finds the right coverage at the right price, and explains every detail before you sign a thing.</p>
     <div class="srv-grid">
-      <div class="srv-card reveal d1">
-        <div class="srv-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
-        </div>
-        <p class="srv-title">Auto Insurance</p>
-        <p class="srv-body">We compare rates across top carriers and find the best policy for how you actually drive. Annual reviews to make sure you're never overpaying.</p>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <p class="srv-title" data-en="Auto Insurance" data-pt="Seguro de Automóvel">Auto Insurance</p>
+        <p class="srv-body" data-en="We compare rates across top carriers and find the best policy for how you actually drive. Annual reviews to make sure you're never overpaying." data-pt="Comparamos tarifas entre as principais seguradoras e encontramos a melhor apólice para como você realmente dirige. Revisões anuais para garantir que você nunca pague mais do que deve.">We compare rates across top carriers and find the best policy for how you actually drive. Annual reviews to make sure you're never overpaying.</p>
       </div>
-      <div class="srv-card reveal d2">
-        <div class="srv-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-        </div>
-        <p class="srv-title">Home Insurance</p>
-        <p class="srv-body">We walk through every line of your homeowner's policy so you know exactly what's covered — and exactly what's not. No surprises at claim time.</p>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <p class="srv-title" data-en="Home Insurance" data-pt="Seguro Residencial">Home Insurance</p>
+        <p class="srv-body" data-en="We walk through every line of your homeowner's policy so you know exactly what's covered — and exactly what's not. No surprises at claim time." data-pt="Revisamos cada linha da sua apólice residencial para que você saiba exatamente o que está coberto — e o que não está. Sem surpresas na hora do sinistro.">We walk through every line of your homeowner's policy so you know exactly what's covered — and exactly what's not. No surprises at claim time.</p>
       </div>
-      <div class="srv-card reveal d3">
-        <div class="srv-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7"/>
-          </svg>
-        </div>
-        <p class="srv-title">Umbrella Insurance</p>
-        <p class="srv-body">Extra liability coverage above and beyond your auto and home policies. One of the best values in insurance — and most people don't know they need it.</p>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7"/></svg></div>
+        <p class="srv-title" data-en="Umbrella Insurance" data-pt="Seguro Guarda-Chuva">Umbrella Insurance</p>
+        <p class="srv-body" data-en="Extra liability coverage above and beyond your auto and home policies. One of the best values in insurance — and most people don't know they need it." data-pt="Cobertura extra de responsabilidade civil além das suas apólices de auto e residencial. Um dos melhores valores em seguros — e a maioria das pessoas não sabe que precisa.">Extra liability coverage above and beyond your auto and home policies. One of the best values in insurance — and most people don't know they need it.</p>
       </div>
-      <div class="srv-card reveal d4">
-        <div class="srv-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
-        </div>
-        <p class="srv-title">Life Insurance</p>
-        <p class="srv-body">The most important — and most personal — conversation in insurance. We have it with care, patience, and zero pressure. Your family's future, protected.</p>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p class="srv-title" data-en="Life Insurance" data-pt="Seguro de Vida">Life Insurance</p>
+        <p class="srv-body" data-en="The most important — and most personal — conversation in insurance. We have it with care, patience, and zero pressure. Your family's future, protected." data-pt="A conversa mais importante — e mais pessoal — em seguros. A temos com cuidado, paciência e zero pressão. O futuro da sua família, protegido.">The most important — and most personal — conversation in insurance. We have it with care, patience, and zero pressure. Your family's future, protected.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/><path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.961-1.45-2.344-2.5"/><path d="M8 14v.5A3.5 3.5 0 0 0 11.5 18h1a3.5 3.5 0 0 0 3.5-3.5V14a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2z"/><path d="M9.5 11c.17-.1 1.216-.19 2.5-.19s2.23.09 2.5.19"/></svg></div>
+        <p class="srv-title" data-en="Pet Insurance" data-pt="Seguro Pet">Pet Insurance</p>
+        <p class="srv-body" data-en="Your pets are family too. We help you find the right coverage so unexpected vet bills never force an impossible choice. Plans for dogs, cats, and more." data-pt="Seus pets também são família. Ajudamos você a encontrar a cobertura certa para que contas veterinárias inesperadas nunca forcem uma escolha impossível. Planos para cães, gatos e mais.">Your pets are family too. We help you find the right coverage so unexpected vet bills never force an impossible choice. Plans for dogs, cats, and more.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ TESTIMONIALS ══ -->
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="reviews">
   <div class="si">
-    <span class="eyebrow reveal">Client Reviews</span>
-    <h2 class="sh reveal d1">Don't take our word for it.</h2>
-    <p class="sp reveal d2">Real clients. Real stories. Real protection.</p>
-
+    <span class="eyebrow reveal" data-en="Client Reviews" data-pt="Avaliações de Clientes">Client Reviews</span>
+    <h2 class="sh reveal" data-en="Don't take our word for it." data-pt="Não acredite apenas na nossa palavra.">Don't take our word for it.</h2>
+    <p class="sp reveal" data-en="Real clients. Real stories. Real protection." data-pt="Clientes reais. Histórias reais. Proteção real.">Real clients. Real stories. Real protection.</p>
     <div class="testi-grid">
-      <div class="tc reveal d1">
+      <div class="tc reveal">
         <div class="tc-stars">★★★★★</div>
-        <p class="tc-quote">"I had been with my old carrier for 8 years and assumed I had a good deal. CARVA found me the same coverage for $400 less a year. The process took 20 minutes."</p>
+        <p class="tc-quote" data-en='"I had been with my old carrier for 8 years and assumed I had a good deal. CARVA found me the same coverage for $400 less a year. The process took 20 minutes."' data-pt='"Estava com minha seguradora antiga há 8 anos e achei que tinha um bom negócio. A CARVA me encontrou a mesma cobertura por $400 a menos por ano. O processo levou 20 minutos."'>"I had been with my old carrier for 8 years and assumed I had a good deal. CARVA found me the same coverage for $400 less a year. The process took 20 minutes."</p>
         <div class="tc-person">
           <div class="tc-avatar" style="background:#D93025">MR</div>
-          <div>
-            <p class="tc-name">Michael Roberts</p>
-            <p class="tc-loc">Dallas, TX · Auto &amp; Home</p>
-          </div>
+          <div><p class="tc-name">Michael Roberts</p><p class="tc-loc">Dallas, TX · Auto &amp; Home</p></div>
         </div>
       </div>
-      <div class="tc reveal d2">
+      <div class="tc reveal">
         <div class="tc-stars">★★★★★</div>
-        <p class="tc-quote">"When my car was totaled, I didn't have to figure anything out alone. CARVA filed everything with me, called the carrier on my behalf, and kept me updated the whole way through."</p>
+        <p class="tc-quote" data-en='"When my car was totaled, I didn\'t have to figure anything out alone. CARVA filed everything with me, called the carrier on my behalf, and kept me updated the whole way through."' data-pt='"Quando meu carro foi destruído, não precisei resolver nada sozinha. A CARVA registrou tudo comigo, ligou para a seguradora em meu nome e me manteve atualizada o tempo todo."'>"When my car was totaled, I didn't have to figure anything out alone. CARVA filed everything with me, called the carrier on my behalf, and kept me updated the whole way through."</p>
         <div class="tc-person">
           <div class="tc-avatar" style="background:#1A6B3C">JW</div>
-          <div>
-            <p class="tc-name">Jennifer Walsh</p>
-            <p class="tc-loc">Orlando, FL · Auto Insurance</p>
-          </div>
+          <div><p class="tc-name">Jennifer Walsh</p><p class="tc-loc">Orlando, FL · Auto Insurance</p></div>
         </div>
       </div>
-      <div class="tc reveal d3">
+      <div class="tc reveal">
         <div class="tc-stars">★★★★★</div>
-        <p class="tc-quote">"As a small business owner I had no idea what coverage I actually needed. CARVA audited my existing policies, found two gaps, and saved me money at the same time. Incredible."</p>
+        <p class="tc-quote" data-en='"As a small business owner I had no idea what coverage I actually needed. CARVA audited my existing policies, found two gaps, and saved me money at the same time. Incredible."' data-pt='"Como pequeno empresário, não sabia que cobertura eu realmente precisava. A CARVA auditou minhas apólices existentes, encontrou duas lacunas e ainda economizou dinheiro para mim. Incrível."'>"As a small business owner I had no idea what coverage I actually needed. CARVA audited my existing policies, found two gaps, and saved me money at the same time. Incredible."</p>
         <div class="tc-person">
           <div class="tc-avatar" style="background:#B45309">DC</div>
-          <div>
-            <p class="tc-name">David Chen</p>
-            <p class="tc-loc">Houston, TX · Business Insurance</p>
-          </div>
+          <div><p class="tc-name">David Chen</p><p class="tc-loc">Houston, TX · Business Insurance</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA BAND ══ -->
+<!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-inner">
     <div class="cta-text">
-      <h2 class="cta-h reveal">Ready to see what<br>you've been missing?</h2>
-      <p class="cta-p reveal d1">A free, no-obligation review takes 15 minutes. We'll compare your current coverage against the market and tell you honestly what we find — even if the answer is that you're already in great shape.</p>
+      <h2 class="cta-h reveal" data-en="Ready to see what<br>you've been missing?" data-pt="Pronto para ver o que<br>você tem perdido?">Ready to see what<br>you've been missing?</h2>
+      <p class="cta-p reveal" data-en="A free, no-obligation review takes 15 minutes. We'll compare your current coverage against the market and tell you honestly what we find — even if the answer is that you're already in great shape." data-pt="Uma revisão gratuita e sem compromisso leva 15 minutos. Compararemos sua cobertura atual com o mercado e diremos honestamente o que encontrarmos — mesmo que a resposta seja que você já está bem protegido.">A free, no-obligation review takes 15 minutes. We'll compare your current coverage against the market and tell you honestly what we find — even if the answer is that you're already in great shape.</p>
     </div>
-    <div class="cta-actions reveal d2">
-      <button class="btn-white" onclick="openModal()">
+    <div class="cta-actions reveal">
+      <button class="btn-white" onclick="openModal()" style="background:white;color:var(--red)" data-en="Get a Free Quote" data-pt="Cotação Grátis">
         Get a Free Quote
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </button>
-      <p class="cta-lang-hint">🇧🇷 Também disponível em Português</p>
+
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- FOOTER -->
 <footer>
   <div class="fi">
     <div class="footer-top">
       <div class="fb">
         <div class="fb-row">
-          <svg width="40" height="40" viewBox="0 0 72 72" fill="none">
-            <rect x="8" y="6" width="56" height="56" rx="16" fill="rgba(217,48,37,0.2)"/>
-            <path d="M36 52C36 52 16 40 16 27C16 21 21 17 26 17C30 17 33.5 19.5 36 23C38.5 19.5 42 17 46 17C51 17 56 21 56 27C56 40 36 52 36 52Z" fill="#D93025"/>
-            <path d="M28 30L33 36L44 24" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="52" height="52" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 12px rgba(217,48,37,0.35))">
+            <rect x="6" y="4" width="60" height="60" rx="17" fill="rgba(217,48,37,0.18)"/>
+            <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.25)" stroke-width="1.5"/>
+            <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+            <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <div style="display:flex;flex-direction:column;line-height:1.15">
             <span class="fb-wm">CARVA</span>
             <span style="font-size:0.58rem;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:0.1em;text-transform:uppercase">Insurance Agency</span>
           </div>
         </div>
-        <p class="fb-desc">We shop the market, advise honestly, and stay in your corner through every claim.</p>
+        <p class="fb-desc" data-en="We shop the market, advise honestly, and stay in your corner through every claim." data-pt="Pesquisamos o mercado, aconselhamos com honestidade e ficamos ao seu lado em cada sinistro.">We shop the market, advise honestly, and stay in your corner through every claim.</p>
       </div>
       <div class="fc">
-        <h4>Coverage</h4>
-        <a href="#services">Auto Insurance</a>
-        <a href="#services">Home Insurance</a>
-        <a href="#services">Life Insurance</a>
-        <a href="#services">Umbrella</a>
+        <h4 data-en="Coverage" data-pt="Cobertura">Coverage</h4>
+        <a href="#services" data-en="Auto Insurance" data-pt="Seguro de Automóvel">Auto Insurance</a>
+        <a href="#services" data-en="Home Insurance" data-pt="Seguro Residencial">Home Insurance</a>
+        <a href="#services" data-en="Life Insurance" data-pt="Seguro de Vida">Life Insurance</a>
+        <a href="#services" data-en="Pet Insurance" data-pt="Seguro Pet">Pet Insurance</a>
+        <a href="#services" data-en="Umbrella" data-pt="Guarda-Chuva">Umbrella</a>
       </div>
       <div class="fc">
-        <h4>For Business</h4>
-        <a href="#business">General Liability</a>
-        <a href="#business">Business Owner's Policy</a>
-        <a href="#business">Workers' Comp</a>
-        <a href="#business">Commercial Auto</a>
+        <h4 data-en="For Business" data-pt="Para Empresas">For Business</h4>
+        <a href="#business" data-en="General Liability" data-pt="Responsabilidade Civil">General Liability</a>
+        <a href="#business" data-en="Business Owner's Policy" data-pt="Apólice do Empresário">Business Owner's Policy</a>
+        <a href="#business" data-en="Workers' Comp" data-pt="Acidentes de Trabalho">Workers' Comp</a>
+        <a href="#business" data-en="Commercial Auto" data-pt="Auto Comercial">Commercial Auto</a>
       </div>
       <div class="fc">
-        <h4>Contact</h4>
+        <h4 data-en="Contact" data-pt="Contato">Contact</h4>
         <a href="tel:9792139729">(979) 213-9729</a>
         <a href="mailto:youragent@carvainsuranceagency.com">youragent@carvainsuranceagency.com</a>
-        
-        <a href="javascript:void(0)" onclick="openModal()" style="color:#D93025;font-weight:700">Get a Free Quote →</a>
+        <a href="javascript:void(0)" onclick="openModal()" style="color:#D93025;font-weight:700" data-en="Get a Free Quote →" data-pt="Cotação Grátis →">Get a Free Quote →</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2025 CARVA Insurance Agency. All rights reserved.</p>
-      <p class="footer-lang">🇧🇷 Também falamos Português.</p>
+
     </div>
   </div>
 </footer>
 
-<!-- ══ MODAL ══ -->
+<!-- MODAL -->
 <div class="overlay" id="overlay" onclick="handleOverlay(event)">
   <div class="modal">
     <div class="m-head" id="mHead">
       <div class="m-topbar"></div>
       <div class="m-logo">
-        <svg width="34" height="34" viewBox="0 0 72 72" fill="none">
-          <rect x="8" y="6" width="56" height="56" rx="16" fill="rgba(217,48,37,0.25)"/>
-          <path d="M36 52C36 52 16 40 16 27C16 21 21 17 26 17C30 17 33.5 19.5 36 23C38.5 19.5 42 17 46 17C51 17 56 21 56 27C56 40 36 52 36 52Z" fill="#D93025"/>
-          <path d="M28 30L33 36L44 24" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="48" height="48" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 12px rgba(217,48,37,0.4))">
+          <rect x="6" y="4" width="60" height="60" rx="17" fill="rgba(217,48,37,0.22)"/>
+          <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.3)" stroke-width="1.5"/>
+          <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+          <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div style="display:flex;flex-direction:column;line-height:1.15">
           <span class="m-wm">CARVA</span>
           <span style="font-size:0.55rem;font-weight:600;color:rgba(255,255,255,.38);letter-spacing:0.1em;text-transform:uppercase">Insurance Agency</span>
         </div>
       </div>
-      <p class="m-title">Get a Free Quote</p>
-      <p class="m-sub">"We'll call you back at a time that works for you."</p>
+      <p class="m-title" data-en="Get a Free Quote" data-pt="Cotação Grátis">Get a Free Quote</p>
+      <p class="m-sub" data-en='"We\'ll call you back at a time that works for you."' data-pt='"Retornaremos sua ligação no horário que for melhor para você."'>"We'll call you back at a time that works for you."</p>
       <button class="m-close" onclick="closeModal()">✕</button>
     </div>
-
     <div class="m-body" id="mForm">
       <div class="f-row">
         <div class="fg">
-          <label class="fl">First Name <span class="req">*</span></label>
+          <label class="fl"><span data-en="First Name" data-pt="Nome">First Name</span> <span class="req">*</span></label>
           <input type="text" class="fi-input" id="fname" placeholder="John" autocomplete="given-name">
         </div>
         <div class="fg">
-          <label class="fl">Last Name <span class="req">*</span></label>
+          <label class="fl"><span data-en="Last Name" data-pt="Sobrenome">Last Name</span> <span class="req">*</span></label>
           <input type="text" class="fi-input" id="lname" placeholder="Smith" autocomplete="family-name">
         </div>
       </div>
       <div class="fg">
-        <label class="fl">Phone Number <span class="req">*</span></label>
+        <label class="fl"><span data-en="Phone Number" data-pt="Telefone">Phone Number</span> <span class="req">*</span></label>
         <input type="tel" class="fi-input" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
       </div>
       <div class="fg">
-        <label class="fl">Email Address <span class="req">*</span></label>
+        <label class="fl"><span data-en="Email Address" data-pt="E-mail">Email Address</span> <span class="req">*</span></label>
         <input type="email" class="fi-input" id="email" placeholder="your@email.com" autocomplete="email">
       </div>
       <div class="fg">
-        <label class="fl">Business Name &nbsp;<span class="opt">(optional)</span></label>
+        <label class="fl"><span data-en="Business Name" data-pt="Nome da Empresa">Business Name</span> &nbsp;<span class="opt" data-en="(optional)" data-pt="(opcional)">(optional)</span></label>
         <input type="text" class="fi-input" id="biz" placeholder="e.g. Smith Construction LLC" autocomplete="organization">
       </div>
       <div class="fg">
-        <label class="fl">Best Time to Call <span class="req">*</span></label>
+        <label class="fl"><span data-en="Best Time to Call" data-pt="Melhor Horário para Ligar">Best Time to Call</span> <span class="req">*</span></label>
         <select class="fi-select" id="calltime">
-          <option value="" disabled selected>Select a time window...</option>
-          <option>Morning — 8 AM to 12 PM</option>
-          <option>Afternoon — 12 PM to 5 PM</option>
-          <option>Evening — 5 PM to 7 PM</option>
-          <option>Anytime works for me</option>
+          <option value="" disabled selected data-en="Select a time window..." data-pt="Selecione um horário...">Select a time window...</option>
+          <option data-en="Morning — 8 AM to 12 PM" data-pt="Manhã — 8h às 12h">Morning — 8 AM to 12 PM</option>
+          <option data-en="Afternoon — 12 PM to 5 PM" data-pt="Tarde — 12h às 17h">Afternoon — 12 PM to 5 PM</option>
+          <option data-en="Evening — 5 PM to 7 PM" data-pt="Noite — 17h às 19h">Evening — 5 PM to 7 PM</option>
+          <option data-en="Anytime works for me" data-pt="Qualquer horário">Anytime works for me</option>
         </select>
       </div>
-      <button class="f-submit" onclick="submitForm()">Request My Free Quote →</button>
-      <p class="f-note">We'll be in touch within one business day. No spam, no obligation — ever.</p>
+      <button class="f-submit" onclick="submitForm()" data-en="Request My Free Quote →" data-pt="Solicitar Cotação Grátis →">Request My Free Quote →</button>
+      <p class="f-note" data-en="We'll be in touch within one business day. No spam, no obligation — ever." data-pt="Entraremos em contato em até um dia útil. Sem spam, sem obrigação — jamais.">We'll be in touch within one business day. No spam, no obligation — ever.</p>
     </div>
-
     <div class="m-thanks" id="mThanks">
       <div class="ty-icon">🎉</div>
-      <p class="ty-title">You're all set!</p>
-      <p class="ty-sub">"We'll give you a call soon — looking forward to being in your corner."<br><br>— The CARVA Team</p>
+      <p class="ty-title" data-en="You're all set!" data-pt="Tudo certo!">You're all set!</p>
+      <p class="ty-sub" data-en='"We\'ll give you a call soon — looking forward to being in your corner."<br><br>— The CARVA Team' data-pt='"Ligaremos para você em breve — será um prazer estar ao seu lado."<br><br>— Equipe CARVA'>"We'll give you a call soon — looking forward to being in your corner."<br><br>— The CARVA Team</p>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+// ── LANGUAGE SYSTEM ──
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  // Toggle button states
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('mob-btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('mob-btn-pt').classList.toggle('active', lang === 'pt');
+
+  // Update all elements with data-en / data-pt
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (!text) return;
+    // Buttons with SVG child — only update text node, not innerHTML wholesale
+    if (el.tagName === 'BUTTON' && el.querySelector('svg')) {
+      const svg = el.querySelector('svg').outerHTML;
+      el.innerHTML = text + ' ' + svg;
+    } else if (el.tagName === 'SELECT') {
+      // handled separately below
+    } else {
+      el.innerHTML = text;
+    }
+  });
+
+  // Update select options
+  document.querySelectorAll('select option[data-' + lang + ']').forEach(opt => {
+    opt.textContent = opt.getAttribute('data-' + lang);
+  });
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+}
+
+// ── NAV SCROLL ──
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
 
+// ── MOBILE MENU ──
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
+// ── MODAL ──
 function openModal() {
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -852,6 +659,7 @@ function handleOverlay(e) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+// ── FORM ──
 function submitForm() {
   const fields = ['fname','lname','phone','email','calltime'];
   let ok = true;
@@ -870,10 +678,7 @@ function submitForm() {
   document.getElementById('mThanks').style.display = 'block';
 }
 
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
