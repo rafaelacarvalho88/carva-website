@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARVA Insurance Agency</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><rect x='6' y='4' width='60' height='60' rx='17' fill='%23FEF2F1'/><path d='M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z' fill='%23D93025'/><path d='M27 30L33 37L45 23' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-56Q68CNQW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-56Q68CNQW9');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#D93025; --red-dk:#B02218; --red-pale:#FEF2F1;
+  --white:#FFFFFF; --off:#F8F8F8; --ink:#111111;
+  --ink-md:#3A3A3A; --ink-soft:#6A6A6A; --mist:#E3E3E3; --light:#F2F2F2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);display:flex;justify-content:space-between;align-items:center;padding:0 52px;transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-wm{font-weight:800;font-size:1.2rem;letter-spacing:-0.025em;color:var(--ink);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:0.79rem;font-weight:600;color:var(--ink-soft);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a
+.nav-links a.nav-highlight:hover{color:var(--red-dk);}
+
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:0;background:var(--off);border:1.5px solid var(--mist);border-radius:100px;overflow:hidden;padding:2px;}
+.lang-btn{background:none;border:none;padding:5px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.05em;cursor:pointer;border-radius:100px;color:var(--ink-soft);transition:background .2s,color .2s;}
+.lang-btn.active{background:var(--red);color:white;}
+
+.btn-red{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;border:none;border-radius:100px;padding:11px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.77rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 14px rgba(217,48,37,.2);}
+.btn-red:hover{background:var(--red-dk);transform:translateY(-1px);box-shadow:0 6px 22px rgba(217,48,37,.28);}
+.btn-red-lg{padding:15px 32px;font-size:0.82rem;box-shadow:0 6px 20px rgba(217,48,37,.25);}
+.btn-outline{display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--ink);border:1.5px solid var(--mist);border-radius:100px;padding:13px 26px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:border-color .2s;}
+.btn-outline:hover{border-color:var(--ink-soft);}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:white;border-bottom:1px solid var(--mist);padding:20px 28px 28px;z-index:99;box-shadow:0 12px 32px rgba(0,0,0,.07);}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;font-size:0.95rem;font-weight:600;color:var(--ink-md);text-decoration:none;padding:11px 0;border-bottom:1px solid var(--off);}
+.mobile-menu a
+.mob-cta{display:block;margin-top:16px;background:var(--red);color:#fff;text-align:center;padding:14px;border-radius:100px;font-weight:800;font-size:0.82rem;letter-spacing:0.05em;text-transform:uppercase;border:none;cursor:pointer;width:100%;font-family:'Plus Jakarta Sans',sans-serif;}
+.mob-lang{display:flex;gap:8px;margin-top:16px;}
+.mob-lang-btn{flex:1;background:var(--off);border:1.5px solid var(--mist);border-radius:100px;padding:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;color:var(--ink-soft);transition:background .2s,color .2s;}
+.mob-lang-btn.active{background:var(--red);color:white;border-color:var(--red);}
+
+/* HERO */
+.hero{min-height:100vh;padding:150px 52px 110px;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--white);}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(217,48,37,0.065) 1px,transparent 1px);background-size:38px 38px;pointer-events:none;}
+.hero-ring-1{position:absolute;top:-110px;right:-110px;width:560px;height:560px;border-radius:50%;border:88px solid rgba(217,48,37,0.048);pointer-events:none;}
+.hero-ring-2{position:absolute;top:30px;right:30px;width:320px;height:320px;border-radius:50%;border:52px solid rgba(217,48,37,0.03);pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:660px;}
+.hero-h1{font-weight:800;font-size:clamp(2.8rem,5.8vw,4.7rem);line-height:1.06;letter-spacing:-0.035em;color:var(--ink);margin-bottom:20px;}
+.hero-h1 em{font-style:normal;color:var(--red);}
+.hero-sub{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.9vw,1.42rem);color:var(--ink-soft);line-height:1.68;max-width:510px;margin-bottom:42px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:50px;}
+.hero-trust{display:flex;gap:22px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:0.74rem;font-weight:600;color:var(--ink-soft);}
+.trust-dot{width:18px;height:18px;background:var(--red-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* SECTIONS */
+section{padding:100px 52px;}
+.si{max-width:1080px;margin:0 auto;}
+.eyebrow{font-size:0.59rem;font-weight:700;letter-spacing:0.45em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:12px;}
+.sh{font-weight:800;font-size:clamp(1.85rem,3.2vw,2.65rem);line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:14px;}
+.sp{font-size:0.95rem;color:var(--ink-soft);line-height:1.88;max-width:500px;}
+
+/* WHY */
+.why{background:var(--off);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:14px;margin-top:52px;}
+.why-card{background:white;border:1.5px solid var(--mist);border-radius:18px;padding:34px 28px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.07);border-color:rgba(217,48,37,.2);}
+.wc-num{position:absolute;top:22px;right:22px;font-weight:800;font-size:3rem;color:rgba(217,48,37,.05);letter-spacing:-0.04em;line-height:1;}
+.wc-icon{width:50px;height:50px;background:var(--red-pale);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;}
+.wc-title{font-weight:800;font-size:1.06rem;color:var(--ink);margin-bottom:11px;letter-spacing:-0.01em;}
+.wc-body{font-size:0.83rem;color:var(--ink-soft);line-height:1.86;}
+
+/* CARRIERS */
+.carriers{background:white;}
+.carriers-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.carriers-left .sp{margin-bottom:36px;}
+.carrier-logos{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.cl{background:var(--off);border:1.5px solid var(--mist);border-radius:14px;padding:22px 18px;display:flex;align-items:center;justify-content:center;min-height:80px;transition:border-color .2s,background .2s,box-shadow .2s;}
+.cl:hover{border-color:rgba(217,48,37,.22);background:white;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.carriers-right{background:var(--ink);border-radius:22px;padding:44px 38px;position:relative;overflow:hidden;}
+.carriers-right::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(217,48,37,.14);pointer-events:none;}
+.cr-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.18rem;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:28px;position:relative;z-index:1;}
+.cr-items{display:flex;flex-direction:column;gap:14px;position:relative;z-index:1;}
+.cr-item{display:flex;align-items:flex-start;gap:12px;}
+.cr-check{width:22px;height:22px;border-radius:50%;background:rgba(217,48,37,.25);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;}
+.cr-check svg{width:11px;height:11px;}
+.cr-text{font-size:0.82rem;color:rgba(255,255,255,.65);line-height:1.65;}
+.cr-text strong{color:rgba(255,255,255,.9);font-weight:700;display:block;margin-bottom:2px;font-size:0.85rem;}
+
+
+
+/* BUSINESS */
+.business{background:var(--off);}
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:52px;}
+.biz-card{background:white;border:1.5px solid var(--mist);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.biz-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.biz-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07);border-color:rgba(217,48,37,.2);}
+.biz-card:hover::after{transform:scaleX(1);}
+.biz-icon{width:44px;height:44px;background:var(--red-pale);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:16px;}
+.biz-title{font-weight:800;font-size:0.95rem;color:var(--ink);margin-bottom:8px;}
+.biz-body{font-size:0.79rem;color:var(--ink-soft);line-height:1.84;}
+
+/* SERVICES */
+.services{background:white;}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:52px;}
+.srv-card{background:var(--off);border:1.5px solid var(--mist);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;}
+.srv-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.srv-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07);background:white;border-color:rgba(217,48,37,.2);}
+.srv-card:hover::after{transform:scaleX(1);}
+.srv-icon{width:44px;height:44px;background:var(--red-pale);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:16px;}
+.srv-title{font-weight:800;font-size:0.95rem;color:var(--ink);margin-bottom:10px;}
+.srv-body{font-size:0.79rem;color:var(--ink-soft);line-height:1.84;}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--ink);}
+.testimonials .eyebrow{color:rgba(217,48,37,.75);}
+.testimonials .sh{color:white;}
+.testimonials .sp{color:rgba(255,255,255,.42);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:14px;margin-top:52px;}
+.tc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:30px;transition:background .25s,border-color .25s;position:relative;overflow:hidden;}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),transparent);opacity:0;transition:opacity .3s;}
+.tc:hover{background:rgba(255,255,255,.07);border-color:rgba(217,48,37,.25);}
+.tc:hover::before{opacity:1;}
+.tc-stars{color:#F59E0B;font-size:0.78rem;letter-spacing:1.5px;margin-bottom:14px;}
+.tc-quote{font-family:'Fraunces',serif;font-style:italic;font-size:0.93rem;color:rgba(255,255,255,.8);line-height:1.65;margin-bottom:20px;}
+.tc-person{display:flex;align-items:center;gap:11px;}
+.tc-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.68rem;color:white;flex-shrink:0;}
+.tc-name{font-weight:700;font-size:0.77rem;color:rgba(255,255,255,.85);}
+.tc-loc{font-size:0.62rem;color:rgba(255,255,255,.32);margin-top:1px;}
+
+/* CTA BAND */
+.cta-band{background:var(--red);padding:80px 52px;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none;}
+.cta-band::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(0,0,0,.06);pointer-events:none;}
+.cta-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:48px;flex-wrap:wrap;}
+.cta-h{font-weight:800;font-size:clamp(1.7rem,3vw,2.5rem);color:white;letter-spacing:-0.025em;line-height:1.1;margin-bottom:10px;}
+.cta-p{font-size:0.93rem;color:rgba(255,255,255,.65);line-height:1.8;max-width:440px;}
+.cta-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
+.btn-white{display:inline-flex;align-items:center;gap:7px;background:white;color:var(--red);border:none;border-radius:100px;padding:15px 32px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.12);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.18);}
+.cta-lang-hint{font-size:0.68rem;color:rgba(255,255,255,.5);font-style:italic;text-align:right;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:52px 52px 32px;}
+.fi{max-width:1080px;margin:0 auto;}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:28px;}
+.fb{max-width:240px;}
+.fb-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.fb-wm{font-weight:800;font-size:1.1rem;color:white;letter-spacing:-0.02em;}
+.fb-desc{font-size:0.78rem;color:rgba(255,255,255,.36);line-height:1.75;}
+.fc h4{font-size:0.59rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:14px;}
+.fc a{display:block;font-size:0.8rem;color:rgba(255,255,255,.46);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+.fc a:hover{color:white;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-size:0.69rem;color:rgba(255,255,255,.22);}
+.footer-lang{font-size:0.65rem;color:rgba(255,255,255,.22);font-style:italic;}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(10,10,10,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{background:white;border-radius:24px;width:100%;max-width:460px;box-shadow:0 24px 80px rgba(0,0,0,.18);overflow:hidden;transform:translateY(20px) scale(.97);transition:transform .3s;}
+.overlay.open .modal{transform:translateY(0) scale(1);}
+.m-head{background:var(--ink);padding:26px 30px 22px;position:relative;}
+.m-topbar{height:3px;background:var(--red);position:absolute;top:0;left:0;right:0;}
+.m-logo{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+.m-wm{font-weight:800;font-size:0.9rem;color:white;letter-spacing:-0.02em;}
+.m-title{font-weight:800;font-size:1.2rem;color:white;letter-spacing:-0.02em;margin-bottom:5px;}
+.m-sub{font-family:'Fraunces',serif;font-style:italic;font-size:0.85rem;color:rgba(255,255,255,.42);line-height:1.5;}
+.m-close{position:absolute;top:20px;right:22px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:0.95rem;transition:background .2s;font-family:inherit;}
+.m-close:hover{background:rgba(255,255,255,.18);color:white;}
+.m-body{padding:26px 30px 30px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:0.63rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+.req{color:var(--red);}
+.opt{font-size:0.6rem;font-weight:500;color:#bbb;letter-spacing:0;text-transform:none;}
+.fi-input,.fi-select{width:100%;padding:12px 14px;border:1.5px solid var(--mist);border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;color:var(--ink);background:white;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s,box-shadow .2s;}
+.fi-input:focus,.fi-select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,48,37,.08);}
+.fi-input::placeholder{color:#c8c8c8;}
+.fi-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236A6A6A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
+.f-submit{width:100%;background:var(--red);color:white;border:none;border-radius:100px;padding:15px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;margin-top:6px;transition:background .2s,transform .15s,box-shadow .2s;box-shadow:0 4px 16px rgba(217,48,37,.25);}
+.f-submit:hover{background:var(--red-dk);transform:translateY(-1px);box-shadow:0 8px 24px rgba(217,48,37,.3);}
+.f-note{font-size:0.63rem;color:var(--ink-soft);text-align:center;margin-top:10px;line-height:1.6;}
+.m-thanks{display:none;padding:52px 30px;text-align:center;}
+.ty-icon{width:64px;height:64px;background:var(--red-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 20px;}
+.ty-title{font-weight:800;font-size:1.3rem;color:var(--ink);margin-bottom:10px;letter-spacing:-0.02em;}
+.ty-sub{font-family:'Fraunces',serif;font-style:italic;font-size:0.95rem;color:var(--ink-soft);line-height:1.65;}
+
+.reveal{opacity:1;transform:none;}
+
+@media(max-width:900px){.carriers-inner{grid-template-columns:1fr;gap:40px;}.cta-actions{align-items:flex-start;}}
+@media(max-width:780px){
+  .nav{padding:0 20px;}.nav-links{display:none;}.hamburger{display:flex;}
+  section{padding:72px 24px;}.hero{padding:124px 24px 88px;}.cta-band{padding:72px 24px;}
+  .sq-section{padding:72px 24px;}
+  footer{padding:44px 24px 28px;}.f-row{grid-template-columns:1fr;}.carrier-logos{grid-template-columns:repeat(2,1fr);}
+}
+
+/* BLOG */
+.blog-tag{display:inline-block;font-size:0.54rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--red);background:var(--red-pale);border-radius:100px;padding:3px 10px;margin-bottom:12px;}
+.blog-card{background:white;border:1.5px solid var(--mist);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08);border-color:rgba(217,48,37,.22);}
+.blog-stripe{height:4px;background:var(--red);}
+.blog-body{padding:24px 22px 20px;flex:1;display:flex;flex-direction:column;}
+.blog-title{font-weight:800;font-size:0.95rem;color:var(--ink);line-height:1.36;letter-spacing:-0.01em;margin-bottom:9px;}
+.blog-excerpt{font-size:0.77rem;color:var(--ink-soft);line-height:1.82;flex:1;}
+.blog-meta{display:flex;align-items:center;gap:7px;font-size:0.61rem;font-weight:600;color:#bbb;margin-top:14px;padding-top:12px;border-top:1px solid var(--mist);}
+.blog-dot{width:3px;height:3px;background:#ddd;border-radius:50%;}
+.blog-cta{color:var(--red);font-size:0.71rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:10px;cursor:pointer;background:none;border:none;font-family:inherit;padding:0;transition:gap .18s;}
+.blog-cta:hover{gap:8px;}
+.blog-pg{background:white;border:1.5px solid var(--mist);border-radius:100px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.74rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:border-color .2s,color .2s;}
+.blog-pg:hover,.blog-pg.active{border-color:var(--red);color:var(--red);}
+@media(max-width:780px){#blogGrid{grid-template-columns:1fr !important;}}
+
+/* BLOG POST READER */
+.post-overlay{position:fixed;inset:0;z-index:600;background:white;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s;}
+.post-overlay.open{opacity:1;pointer-events:all;}
+.post-nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--mist);padding:0 52px;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.post-back{display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;color:var(--ink-soft);text-decoration:none;cursor:pointer;border:none;background:none;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;transition:color .2s;}
+.post-back:hover{color:var(--ink);}
+.post-back svg{transition:transform .2s;}
+.post-back:hover svg{transform:translateX(-3px);}
+.post-cta-top{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;border:none;border-radius:100px;padding:10px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.72rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;transition:background .2s;box-shadow:0 4px 14px rgba(217,48,37,.2);}
+.post-cta-top:hover{background:var(--red-dk);}
+.post-wrap{max-width:720px;margin:0 auto;padding:60px 52px 100px;}
+.post-tag{display:inline-block;font-size:0.56rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:var(--red);background:var(--red-pale);border-radius:100px;padding:4px 12px;margin-bottom:20px;}
+.post-title{font-weight:800;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.08;letter-spacing:-0.03em;color:var(--ink);margin-bottom:18px;}
+.post-meta{display:flex;align-items:center;gap:10px;font-size:0.7rem;font-weight:600;color:var(--ink-soft);margin-bottom:40px;padding-bottom:28px;border-bottom:1.5px solid var(--mist);}
+.post-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--mist);}
+.post-author{display:flex;align-items:center;gap:8px;}
+.post-author-avatar{width:28px;height:28px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.6rem;color:white;flex-shrink:0;}
+.post-body{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.02rem;line-height:1.85;color:var(--ink-md);}
+.post-body h2{font-weight:800;font-size:1.35rem;color:var(--ink);margin:2em 0 0.6em;letter-spacing:-0.02em;}
+.post-body h3{font-weight:700;font-size:1.1rem;color:var(--ink);margin:1.6em 0 0.5em;letter-spacing:-0.01em;}
+.post-body p{margin-bottom:1.2em;}
+.post-body ul,.post-body ol{margin:0.6em 0 1.2em 1.4em;}
+.post-body li{margin-bottom:0.5em;}
+.post-body strong{font-weight:700;color:var(--ink);}
+.post-body .callout{background:var(--red-pale);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:18px 22px;margin:1.8em 0;font-size:0.94rem;line-height:1.7;}
+.post-body .callout strong{color:var(--red);}
+.post-footer{margin-top:52px;padding:36px 40px;background:var(--ink);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.post-footer-text{color:white;}
+.post-footer-text p:first-child{font-weight:800;font-size:1.05rem;margin-bottom:6px;letter-spacing:-0.01em;}
+.post-footer-text p:last-child{font-size:0.82rem;color:rgba(255,255,255,.45);line-height:1.6;}
+.post-footer-btn{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;border:none;border-radius:100px;padding:14px 28px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.post-footer-btn:hover{background:var(--red-dk);}
+@media(max-width:780px){.post-nav{padding:0 20px;}.post-wrap{padding:40px 24px 80px;}.post-title{font-size:1.7rem;}}
+
+/* ── SELF-QUOTE SECTION ── */
+.sq-section{background:var(--ink);padding:100px 52px;position:relative;overflow:hidden;}
+.sq-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(217,48,37,0.07) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;}
+.sq-section .eyebrow{color:rgba(217,48,37,0.75);}
+.sq-section .sh{color:white;}
+.sq-section .sp{color:rgba(255,255,255,.46);max-width:560px;}
+.sq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:52px;}
+.sq-card{border-radius:20px;padding:36px 32px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .28s,box-shadow .28s;}
+.sq-card:hover{transform:translateY(-6px);}
+.sq-card-dark{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);}
+.sq-card-dark:hover{box-shadow:0 24px 60px rgba(0,0,0,.4);border-color:rgba(217,48,37,.3);}
+.sq-card-light{background:white;border:1.5px solid var(--mist);}
+.sq-card-light:hover{box-shadow:0 24px 60px rgba(0,0,0,.18);border-color:rgba(217,48,37,.25);}
+.sq-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);}
+.sq-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;flex-shrink:0;}
+.sq-icon-dark{background:rgba(217,48,37,.18);}
+.sq-icon-light{background:var(--red-pale);}
+.sq-card-title{font-weight:800;font-size:1.05rem;letter-spacing:-0.015em;margin-bottom:8px;}
+.sq-card-title-dark{color:white;}
+.sq-card-title-light{color:var(--ink);}
+.sq-card-body{font-size:0.82rem;line-height:1.82;flex:1;margin-bottom:22px;}
+.sq-card-body-dark{color:rgba(255,255,255,.52);}
+.sq-card-body-light{color:var(--ink-soft);}
+.sq-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+.sq-pill{font-size:0.62rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;}
+.sq-pill-dark{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55);}
+.sq-pill-light{background:var(--red-pale);color:var(--red);}
+.sq-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:white;border:none;border-radius:100px;padding:14px 26px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.77rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,box-shadow .2s;box-shadow:0 4px 18px rgba(217,48,37,.3);width:100%;text-align:center;}
+.sq-btn-primary:hover{background:var(--red-dk);box-shadow:0 8px 26px rgba(217,48,37,.38);}
+.sq-alt{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
+.sq-alt:hover{color:rgba(255,255,255,.7);}
+.sq-help{margin-top:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.sq-help-text p:first-child{font-weight:700;font-size:0.88rem;color:rgba(255,255,255,.75);margin-bottom:4px;}
+.sq-help-text p:last-child{font-size:0.76rem;color:rgba(255,255,255,.36);line-height:1.6;}
+.sq-help-actions{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;}
+.sq-btn-call{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:11px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.74rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
+.sq-btn-call:hover{background:rgba(255,255,255,.18);}
+.sq-btn-quote{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:white;border:none;border-radius:100px;padding:11px 22px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.74rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;cursor:pointer;transition:background .2s;box-shadow:0 4px 14px rgba(217,48,37,.25);}
+.sq-btn-quote:hover{background:var(--red-dk);}
+.nav-highlight{color:var(--red) !important;font-weight:800 !important;}
+.mob-highlight{color:var(--red) !important;font-weight:800 !important;}
+@media(max-width:780px){
+  .sq-section{padding:72px 24px;}
+  .sq-help{flex-direction:column;align-items:flex-start;}
+  .sq-help-actions{width:100%;}
+  .sq-btn-call,.sq-btn-quote{flex:1;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-brand">
+    <svg width="54" height="54" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 10px rgba(217,48,37,0.28))">
+      <rect x="6" y="4" width="60" height="60" rx="17" fill="#FEF2F1"/>
+      <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.15)" stroke-width="1.5"/>
+      <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+      <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div style="display:flex;flex-direction:column;line-height:1.1">
+      <span class="nav-wm">CARVA</span>
+      <span style="font-size:0.6rem;font-weight:600;color:var(--ink-soft);letter-spacing:0.08em;text-transform:uppercase">Insurance Agency</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why" data-en="Why CARVA" data-pt="Por que CARVA" data-es="Por qué CARVA">Why CARVA</a></li>
+    <li><a href="#business" data-en="For Business" data-pt="Para Empresas" data-es="Para Empresas">For Business</a></li>
+    <li><a href="#services" data-en="Personal Coverage" data-pt="Cobertura Pessoal" data-es="Cobertura Personal">Personal Coverage</a></li>
+    <li><a href="#quote-now" class="nav-highlight" data-en="Quote Online" data-pt="Cotação Online" data-es="Cotización Online">Quote Online</a></li>
+    <li><a href="#reviews" data-en="Reviews" data-pt="Avaliações" data-es="Reseñas">Reviews</a></li>
+    <li><a href="#blog" data-en="Blog" data-pt="Blog" data-es="Blog">Blog</a></li>
+    <li>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')" style="display:flex;align-items:center;gap:5px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="18" height="12" fill="#B22234"/><rect y="0.92" width="18" height="0.92" fill="#fff"/><rect y="2.77" width="18" height="0.92" fill="#fff"/><rect y="4.61" width="18" height="0.92" fill="#fff"/><rect y="6.46" width="18" height="0.92" fill="#fff"/><rect y="8.31" width="18" height="0.92" fill="#fff"/><rect y="10.15" width="18" height="0.92" fill="#fff"/><rect width="7.2" height="6.46" fill="#3C3B6E"/><text x="0.6" y="2.2" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</text><text x="1.2" y="3.95" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;</text><text x="0.6" y="5.7" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</text></svg> EN</button>
+        <button class="lang-btn" id="btn-pt" onclick="setLang('pt')" style="display:flex;align-items:center;gap:5px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="18" height="12" fill="#009C3B"/><polygon points="9,0.9 17.4,6 9,11.1 0.6,6" fill="#FEDF00"/><circle cx="9" cy="6" r="2.8" fill="#002776"/><path d="M6.2,4.95 Q9,3.85 11.8,4.95" stroke="white" stroke-width="0.72" fill="none" stroke-linecap="round"/><text x="9" y="7.05" font-size="0.7" fill="white" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="0.08">ORDEM E PROGRESSO</text><circle cx="7.4" cy="4.5" r="0.22" fill="white"/><circle cx="9.1" cy="3.98" r="0.22" fill="white"/><circle cx="10.8" cy="4.5" r="0.22" fill="white"/></svg> PT</button>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')" style="display:flex;align-items:center;gap:5px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="6" height="12" fill="#006847"/><rect x="6" width="6" height="12" fill="#FFFFFF"/><rect x="12" width="6" height="12" fill="#CE1126"/><g transform="translate(9,6)"><ellipse ry="2.1" rx="1.7" fill="#7B4F2E" opacity="0.18"/><path d="M0,-2.1 C-0.45,-1.4 -1.7,-0.75 -1.7,0.35 C-1.7,1.45 -0.85,2.1 0,2.1 C0.85,2.1 1.7,1.45 1.7,0.35 C1.7,-0.75 0.45,-1.4 0,-2.1Z" fill="#7B4F2E"/><ellipse cy="0.5" rx="1.05" ry="0.65" fill="#5A8A1F"/><circle cy="-1.9" r="0.52" fill="#8B1A1A"/><path d="M-1.7,0.35 L-2.8,1.15" stroke="#7B4F2E" stroke-width="0.48" stroke-linecap="round"/><path d="M1.7,0.35 L2.8,1.15" stroke="#7B4F2E" stroke-width="0.48" stroke-linecap="round"/></g></svg> ES</button>
+      </div>
+    </li>
+    <li><button class="btn-red" onclick="openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">Get a Free Quote</button></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#why" onclick="toggleMenu()" data-en="Why CARVA" data-pt="Por que CARVA" data-es="Por qué CARVA">Why CARVA</a>
+  <a href="#business" onclick="toggleMenu()" data-en="For Business" data-pt="Para Empresas" data-es="Para Empresas">For Business</a>
+  <a href="#services" onclick="toggleMenu()" data-en="Personal Coverage" data-pt="Cobertura Pessoal" data-es="Cobertura Personal">Personal Coverage</a>
+  <a href="#quote-now" onclick="toggleMenu()" class="mob-highlight" data-en="⚡ Quote Online Now" data-pt="⚡ Cotação Online" data-es="⚡ Cotización Online">⚡ Quote Online Now</a>
+  <a href="#reviews" onclick="toggleMenu()" data-en="Reviews" data-pt="Avaliações" data-es="Reseñas">Reviews</a>
+  <a href="#blog" onclick="toggleMenu()" data-en="Blog" data-pt="Blog" data-es="Blog">Blog</a>
+  <div class="mob-lang">
+    <button class="mob-lang-btn active" id="mob-btn-en" onclick="setLang('en')" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="18" height="12" fill="#B22234"/><rect y="0.92" width="18" height="0.92" fill="#fff"/><rect y="2.77" width="18" height="0.92" fill="#fff"/><rect y="4.61" width="18" height="0.92" fill="#fff"/><rect y="6.46" width="18" height="0.92" fill="#fff"/><rect y="8.31" width="18" height="0.92" fill="#fff"/><rect y="10.15" width="18" height="0.92" fill="#fff"/><rect width="7.2" height="6.46" fill="#3C3B6E"/><text x="0.6" y="2.2" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</text><text x="1.2" y="3.95" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;</text><text x="0.6" y="5.7" font-size="1.55" fill="white" font-family="sans-serif">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</text></svg> English</button>
+    <button class="mob-lang-btn" id="mob-btn-pt" onclick="setLang('pt')" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="18" height="12" fill="#009C3B"/><polygon points="9,0.9 17.4,6 9,11.1 0.6,6" fill="#FEDF00"/><circle cx="9" cy="6" r="2.8" fill="#002776"/><path d="M6.2,4.95 Q9,3.85 11.8,4.95" stroke="white" stroke-width="0.72" fill="none" stroke-linecap="round"/><text x="9" y="7.05" font-size="0.7" fill="white" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" letter-spacing="0.08">ORDEM E PROGRESSO</text><circle cx="7.4" cy="4.5" r="0.22" fill="white"/><circle cx="9.1" cy="3.98" r="0.22" fill="white"/><circle cx="10.8" cy="4.5" r="0.22" fill="white"/></svg> Português</button>
+    <button class="mob-lang-btn" id="mob-btn-es" onclick="setLang('es')" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg class="flag" viewBox="0 0 18 12" style="width:18px;height:12px;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.12);display:inline-block;vertical-align:middle;"><rect width="6" height="12" fill="#006847"/><rect x="6" width="6" height="12" fill="#FFFFFF"/><rect x="12" width="6" height="12" fill="#CE1126"/><g transform="translate(9,6)"><ellipse ry="2.1" rx="1.7" fill="#7B4F2E" opacity="0.18"/><path d="M0,-2.1 C-0.45,-1.4 -1.7,-0.75 -1.7,0.35 C-1.7,1.45 -0.85,2.1 0,2.1 C0.85,2.1 1.7,1.45 1.7,0.35 C1.7,-0.75 0.45,-1.4 0,-2.1Z" fill="#7B4F2E"/><ellipse cy="0.5" rx="1.05" ry="0.65" fill="#5A8A1F"/><circle cy="-1.9" r="0.52" fill="#8B1A1A"/><path d="M-1.7,0.35 L-2.8,1.15" stroke="#7B4F2E" stroke-width="0.48" stroke-linecap="round"/><path d="M1.7,0.35 L2.8,1.15" stroke="#7B4F2E" stroke-width="0.48" stroke-linecap="round"/></g></svg> Español</button>
+  </div>
+  <button class="mob-cta" onclick="toggleMenu();openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">Get a Free Quote</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring-1"></div>
+  <div class="hero-ring-2"></div>
+  <div class="hero-inner">
+    <h1 class="hero-h1" data-en="The right coverage.<br>The <em>best</em> rate.<br>Someone you can call." data-es="La cobertura correcta.<br>La mejor <em>tarifa</em>.<br>Alguien a quien llamar." data-pt="A cobertura certa.<br>O melhor <em>preço</em>.<br>Alguém com quem contar.">
+      The right coverage.<br>The <em>best</em> rate.<br>Someone you can call.
+    </h1>
+    <p class="hero-sub" data-en='"CARVA shops the biggest carriers in the country on your behalf — and stays in your corner long after the policy is signed."' data-pt='"A CARVA pesquisa as maiores seguradoras do país para você — e permanece ao seu lado muito depois da apólice ser assinada."' data-es='"CARVA busca las mejores aseguradoras del país en su nombre — y permanece a su lado mucho después de firmada la póliza."'>
+      "CARVA shops the biggest carriers in the country on your behalf — and stays in your corner long after the policy is signed."
+    </p>
+    <div class="hero-ctas">
+      <button class="btn-red btn-red-lg" onclick="openModal()" data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">
+        Get a Free Quote
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <a href="#quote-now" class="btn-outline" data-en="Quote Online Now" data-pt="Cotação Online" data-es="Cotización Online">Quote Online Now</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Top-rated carriers" data-pt="Seguradoras top" data-es="Aseguradoras top">Top-rated carriers</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Individuals &amp; businesses" data-pt="Pessoas e empresas" data-es="Personas y empresas">Individuals &amp; businesses</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+        <span data-en="Claims advocacy" data-pt="Apoio em sinistros" data-es="Apoyo en reclamaciones">Claims advocacy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CARVA -->
+<section class="why" id="why">
+  <div class="si">
+    <span class="eyebrow reveal" data-en="Why CARVA" data-pt="Por que CARVA" data-es="Por qué CARVA">Why CARVA</span>
+    <h2 class="sh reveal" data-en="An agent who works<br>for you — not the carrier." data-es="Un agente que trabaja<br>para usted — no para la aseguradora." data-pt="Um corretor que trabalha<br>para você — não para a seguradora.">An agent who works<br>for you — not the carrier.</h2>
+    <p class="sp reveal" data-en="Most agents represent one company. CARVA is independent, which means we shop across the market to find the right fit for your specific situation — and we stay with you long after the sale." data-pt="A maioria dos corretores representa uma única empresa. A CARVA é independente, o que significa que pesquisamos o mercado para encontrar a melhor opção para a sua situação — e continuamos com você muito depois da venda." data-es="La mayoría de los agentes representa una sola empresa. CARVA es independiente, lo que significa que buscamos en todo el mercado la mejor opción para su situación — y nos quedamos con usted mucho después de la venta.">Most agents represent one company. CARVA is independent, which means we shop across the market to find the right fit for your specific situation — and we stay with you long after the sale.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="wc-num">01</div>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <p class="wc-title" data-en="We shop the market for you." data-pt="Pesquisamos o mercado para você." data-es="Buscamos el mercado para usted.">We shop the market for you.</p>
+        <p class="wc-body" data-en="As an independent agent, CARVA has relationships with the nation's largest and most trusted carriers. We compare options across all of them to find the best combination of price and coverage for your exact needs." data-pt="Como corretor independente, a CARVA tem relações com as maiores e mais confiáveis seguradoras do país. Comparamos todas as opções para encontrar a melhor combinação de preço e cobertura para suas necessidades." data-es="Como agente independiente, CARVA tiene relaciones con las aseguradoras más grandes y confiables del país. Comparamos todas las opciones para encontrar la mejor combinación de precio y cobertura para sus necesidades.">As an independent agent, CARVA has relationships with the nation's largest and most trusted carriers. We compare options across all of them to find the best combination of price and coverage for your exact needs.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-num">02</div>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="wc-title" data-en="We advise you honestly." data-pt="Aconselhamos com honestidade." data-es="Le asesoramos con honestidad.">We advise you honestly.</p>
+        <p class="wc-body" data-en="We tell you what you need — and what you don't. Our goal is a relationship that lasts for years, which means your best interest always comes first. No upsells, no pressure, no fine print surprises." data-pt="Dizemos o que você precisa — e o que não precisa. Nosso objetivo é um relacionamento duradouro, o que significa que seus interesses sempre vêm em primeiro lugar. Sem vendas forçadas, sem pressão, sem surpresas." data-es="Le decimos lo que necesita — y lo que no. Nuestro objetivo es una relación duradera, lo que significa que sus intereses siempre van primero. Sin ventas forzadas, sin presión, sin sorpresas.">We tell you what you need — and what you don't. Our goal is a relationship that lasts for years, which means your best interest always comes first. No upsells, no pressure, no fine print surprises.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="wc-num">03</div>
+        <div class="wc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <p class="wc-title" data-en="We're there for every claim." data-pt="Estamos com você em cada sinistro." data-es="Estamos con usted en cada reclamación.">We're there for every claim.</p>
+        <p class="wc-body" data-en="Most agents disappear after the sale. When something goes wrong, CARVA answers the phone — helps you file, advocates with the carrier on your behalf, and stays until the situation is fully resolved." data-pt="A maioria dos corretores some após a venda. Quando algo dá errado, a CARVA atende o telefone — ajuda a registrar o sinistro, defende seus direitos junto à seguradora e permanece até a resolução completa." data-es="La mayoría de los agentes desaparece después de la venta. Cuando algo sale mal, CARVA contesta el teléfono — le ayuda a presentar la reclamación, aboga por usted ante la aseguradora y permanece hasta la resolución completa.">Most agents disappear after the sale. When something goes wrong, CARVA answers the phone — helps you file, advocates with the carrier on your behalf, and stays until the situation is fully resolved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIERS -->
+<section class="carriers" id="carriers">
+  <div class="si">
+    <div class="carriers-inner">
+      <div class="carriers-left">
+        <span class="eyebrow reveal" data-en="Our Carrier Network" data-pt="Nossa Rede de Seguradoras" data-es="Nuestra Red de Aseguradoras">Our Carrier Network</span>
+        <h2 class="sh reveal" data-en="We work with the biggest names — so you get the best deal." data-pt="Trabalhamos com os maiores nomes — para você ter o melhor negócio." data-es="Trabajamos con los nombres más grandes — para que obtenga el mejor trato.">We work with the biggest names — so you get the best deal.</h2>
+        <p class="sp reveal" data-en="CARVA maintains close relationships with the top-rated carriers in the United States. That access means real competition for your business — and real savings for you." data-pt="A CARVA mantém relações próximas com as seguradoras mais bem avaliadas dos Estados Unidos. Esse acesso significa concorrência real pelo seu negócio — e economia real para você." data-es="CARVA mantiene relaciones cercanas con las aseguradoras mejor calificadas de Estados Unidos. Ese acceso significa competencia real por su negocio — y ahorros reales para usted.">CARVA maintains close relationships with the top-rated carriers in the United States. That access means real competition for your business — and real savings for you.</p>
+        <div class="carrier-logos reveal">
+          <div class="cl" title="Chubb"><img src="https://logo.clearbit.com/chubb.com" alt="Chubb" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:900;font-size:1.1rem;letter-spacing:-0.03em;color:#000;font-family:'Arial Black',Arial,sans-serif;">Chubb</span></div>
+          <div class="cl" title="The Hartford"><img src="https://logo.clearbit.com/thehartford.com" alt="The Hartford" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:800;font-size:0.7rem;letter-spacing:0.05em;color:#C8202F;font-family:Arial,sans-serif;">THE HARTFORD</span></div>
+          <div class="cl" title="Hiscox"><img src="https://logo.clearbit.com/hiscox.com" alt="Hiscox" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:900;font-size:1.1rem;color:#003087;font-family:'Arial Black',Arial,sans-serif;">hiscox</span></div>
+          <div class="cl" title="Thimble"><img src="https://logo.clearbit.com/thimble.com" alt="Thimble" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:700;font-size:1rem;color:#00B388;font-family:Arial,sans-serif;">thimble</span></div>
+          <div class="cl" title="Coterie"><img src="https://logo.clearbit.com/coterie.com" alt="Coterie" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:700;font-size:1rem;color:#5B3F9A;font-family:Arial,sans-serif;">coterie</span></div>
+          <div class="cl" style="background:#1B2D55;border-color:#1B2D55;" title="Simply Business"><img src="https://logo.clearbit.com/simplybusiness.com" alt="Simply Business" style="max-height:44px;max-width:110px;object-fit:contain;filter:brightness(0) invert(1);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:800;font-size:0.72rem;color:white;letter-spacing:0.08em;text-align:center;line-height:1.3;font-family:Arial,sans-serif;">SIMPLY<br>BUSINESS</span></div>
+          <div class="cl" title="Obie"><img src="https://logo.clearbit.com/obieinsurance.com" alt="Obie" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:900;font-size:1.1rem;color:#FF6B2B;font-family:'Arial Black',Arial,sans-serif;">obie</span></div>
+          <div class="cl" title="Bolt"><img src="https://logo.clearbit.com/bolt.com" alt="Bolt" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-weight:900;font-size:1.1rem;color:#2563EB;font-family:'Arial Black',Arial,sans-serif;">bolt</span></div>
+        </div>
+      </div>
+      <div class="carriers-right reveal">
+        <p class="cr-quote" data-en='"Having one agent who knows all the carriers — and knows you — is how you stop overpaying and start being protected."' data-pt='"Ter um corretor que conhece todas as seguradoras — e conhece você — é como você para de pagar demais e começa a ser protegido de verdade."'>"Having one agent who knows all the carriers — and knows you — is how you stop overpaying and start being protected."</p>
+        <div class="cr-items">
+          <div class="cr-item">
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="Competitive rates, every year" data-pt="Preços competitivos, todo ano" data-es="Tarifas competitivas, cada año">Competitive rates, every year</strong><span data-en="We re-shop your coverage at every renewal — no loyalty penalty for staying with CARVA." data-pt="Pesquisamos sua cobertura em cada renovação — sem penalidade por fidelidade." data-es="Buscamos su cobertura en cada renovación — sin penalización por quedarse con CARVA.">We re-shop your coverage at every renewal — no loyalty penalty for staying with CARVA.</span></p>
+          </div>
+          <div class="cr-item">
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="Coverage that actually fits" data-pt="Cobertura que realmente serve" data-es="Cobertura que realmente se adapta">Coverage that actually fits</strong><span data-en="We match the right carrier to your specific risk profile — not the one that pays the highest commission." data-pt="Combinamos a seguradora certa ao seu perfil de risco — não a que paga a maior comissão." data-es="Combinamos la aseguradora correcta a su perfil de riesgo — no la que paga la mayor comisión.">We match the right carrier to your specific risk profile — not the one that pays the highest commission.</span></p>
+          </div>
+          <div class="cr-item">
+            <div class="cr-check"><svg viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+            <p class="cr-text"><strong data-en="One point of contact, always" data-pt="Um único contato, sempre" data-es="Un solo punto de contacto, siempre">One point of contact, always</strong><span data-en="You call CARVA. We handle the carrier. No call centers, no hold music, no strangers." data-pt="Você liga para a CARVA. Nós cuidamos da seguradora. Sem call centers, sem música de espera, sem estranhos." data-es="Usted llama a CARVA. Nosotros manejamos la aseguradora. Sin centros de llamadas, sin música de espera, sin desconocidos.">You call CARVA. We handle the carrier. No call centers, no hold music, no strangers.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  INSTANT QUOTE SECTION                                       -->
+<!-- ============================================================ -->
+
+<!-- SELF-QUOTE SECTION -->
+<section class="sq-section" id="quote-now">
+  <div class="si" style="position:relative;z-index:2;">
+    <span class="eyebrow reveal" data-en="Instant Coverage" data-pt="Cobertura Imediata" data-es="Cobertura Inmediata">Instant Coverage</span>
+    <h2 class="sh reveal" data-en="Quote it yourself.<br>Bind it in minutes." data-pt="Cotize você mesmo.<br>Contrate em minutos." data-es="Cotice usted mismo.<br>Vincule en minutos.">Quote it yourself.<br>Bind it in minutes.</h2>
+    <p class="sp reveal" data-en="These partners let you get covered instantly — no phone call needed. Or reach out to Rafaela and she'll handle everything for you." data-pt="Esses parceiros permitem cobertura instantânea — sem ligação necessária. Ou entre em contato com Rafaela e ela cuida de tudo por você." data-es="Estos socios le permiten obtener cobertura al instante — sin llamada necesaria. O contáctese con Rafaela y ella lo maneja todo.">These partners let you get covered instantly — no phone call needed. Or reach out to Rafaela and she'll handle everything for you.</p>
+
+    <div class="sq-grid">
+
+      <!-- GENERAL LIABILITY -->
+      <div class="sq-card sq-card-dark reveal">
+        <div class="sq-bar"></div>
+        <div class="sq-icon sq-icon-dark"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="sq-card-title sq-card-title-dark" data-en="General Liability" data-pt="Responsabilidade Civil" data-es="Responsabilidad Civil General">General Liability</p>
+        <p class="sq-card-body sq-card-body-dark" data-en="Protect your business from third-party claims for injury or property damage. Quote and bind online in under 10 minutes." data-pt="Proteja seu negócio contra reclamações de terceiros por lesões ou danos materiais. Cotize e contrate online em menos de 10 minutos." data-es="Proteja su negocio de reclamaciones de terceros por lesiones o daños a la propiedad. Cotice y vincule en línea en menos de 10 minutos.">Protect your business from third-party claims for injury or property damage. Quote and bind online in under 10 minutes.</p>
+        <div class="sq-pills">
+          <span class="sq-pill sq-pill-dark" data-en="Small Business" data-pt="Pequena Empresa" data-es="Pequeña Empresa">Small Business</span>
+          <span class="sq-pill sq-pill-dark" data-en="Contractors" data-pt="Empreiteiros" data-es="Contratistas">Contractors</span>
+          <span class="sq-pill sq-pill-dark" data-en="Freelancers" data-pt="Autônomos" data-es="Freelancers">Freelancers</span>
+        </div>
+        <a href="https://track.nextinsurance.com/links?agent_affiliation=42hdT3yMil7FA1pR&serial=992855993&channel=affiliation" target="_blank" rel="noopener" class="sq-btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-en="Quote with NEXT Insurance" data-pt="Cotizar com NEXT Insurance" data-es="Cotizar con NEXT Insurance">Quote with NEXT Insurance</span>
+        </a>
+        <a href="https://link.thimble.com/broker/F3R6S3S7ZC" target="_blank" rel="noopener" class="sq-alt">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span data-en="Or try Thimble (flexible by-the-job plans)" data-pt="Ou experimente Thimble (planos flexíveis por projeto)" data-es="O pruebe Thimble (planes flexibles por proyecto)">Or try Thimble (flexible by-the-job plans)</span>
+        </a>
+      </div>
+
+      <!-- PET INSURANCE -->
+      <div class="sq-card sq-card-light reveal">
+        <div class="sq-bar"></div>
+        <div class="sq-icon sq-icon-light"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/><path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.961-1.45-2.344-2.5"/><path d="M8 14v.5A3.5 3.5 0 0 0 11.5 18h1a3.5 3.5 0 0 0 3.5-3.5V14a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2z"/><path d="M9.5 11c.17-.1 1.216-.19 2.5-.19s2.23.09 2.5.19"/></svg></div>
+        <p class="sq-card-title sq-card-title-light" data-en="Pet Insurance" data-pt="Seguro Pet" data-es="Seguro de Mascotas">Pet Insurance</p>
+        <p class="sq-card-body sq-card-body-light" data-en="Cover unexpected vet bills before they happen. Fetch offers accident and illness plans for dogs and cats — enroll online in minutes." data-pt="Cubra contas veterinárias inesperadas antes que aconteçam. A Fetch oferece planos para acidentes e doenças para cães e gatos." data-es="Cubra las facturas veterinarias inesperadas antes de que ocurran. Fetch ofrece planes de accidentes y enfermedades para perros y gatos.">Cover unexpected vet bills before they happen. Fetch offers accident and illness plans for dogs and cats — enroll online in minutes.</p>
+        <div class="sq-pills">
+          <span class="sq-pill sq-pill-light" data-en="Dogs &amp; Cats" data-pt="Cães e Gatos" data-es="Perros y Gatos">Dogs &amp; Cats</span>
+          <span class="sq-pill sq-pill-light" data-en="Accidents &amp; Illness" data-pt="Acidentes e Doenças" data-es="Accidentes y Enfermedades">Accidents &amp; Illness</span>
+          <span class="sq-pill sq-pill-light" data-en="No Age Limit" data-pt="Sem Limite de Idade" data-es="Sin Límite de Edad">No Age Limit</span>
+        </div>
+        <a href="https://www.fetchpet.com/mypet?a=FC29908&utm_source=firstconnect&utm_medium=brokerportal&utm_campaign=firstconnect_email&c=firstconnect&p=firstconnect" target="_blank" rel="noopener" class="sq-btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-en="Quote with Fetch" data-pt="Cotizar com Fetch" data-es="Cotizar con Fetch">Quote with Fetch</span>
+        </a>
+      </div>
+
+      <!-- IRS / TAX INSURANCE -->
+      <div class="sq-card sq-card-light reveal">
+        <div class="sq-bar"></div>
+        <div class="sq-icon sq-icon-light"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/><polyline points="9 9 10 9 11 9"/></svg></div>
+        <p class="sq-card-title sq-card-title-light" data-en="IRS Audit &amp; Tax Insurance" data-pt="Seguro de Auditoria Fiscal" data-es="Seguro de Auditoría del IRS">IRS Audit &amp; Tax Insurance</p>
+        <p class="sq-card-body sq-card-body-light" data-en="If the IRS comes knocking, InsureTax covers your audit defense and tax filing errors — for individuals and businesses alike." data-pt="Se o IRS bater à sua porta, o InsureTax cobre a defesa em auditorias e erros de declaração fiscal — para pessoas físicas e jurídicas." data-es="Si el IRS llama a su puerta, InsureTax cubre la defensa en auditorías y errores de declaración fiscal — para personas y empresas.">If the IRS comes knocking, InsureTax covers your audit defense and tax filing errors — for individuals and businesses alike.</p>
+        <div class="sq-pills">
+          <span class="sq-pill sq-pill-light" data-en="Audit Defense" data-pt="Defesa em Auditoria" data-es="Defensa de Auditoría">Audit Defense</span>
+          <span class="sq-pill sq-pill-light" data-en="Filing Errors" data-pt="Erros de Declaração" data-es="Errores de Declaración">Filing Errors</span>
+          <span class="sq-pill sq-pill-light" data-en="Individuals &amp; Business" data-pt="Pessoas e Empresas" data-es="Personas y Empresas">Individuals &amp; Business</span>
+        </div>
+        <a href="https://partner.insuretax.com/initial-assessment?rid=rafaelacarvalho" target="_blank" rel="noopener" class="sq-btn-primary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-en="Quote with InsureTax" data-pt="Cotizar com InsureTax" data-es="Cotizar con InsureTax">Quote with InsureTax</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Help bar -->
+    <div class="sq-help reveal">
+      <div class="sq-help-text">
+        <p data-en="Not sure which option is right for you?" data-pt="Não sabe qual opção é certa para você?" data-es="¿No sabe cuál opción es la correcta para usted?">Not sure which option is right for you?</p>
+        <p data-en="Rafaela can walk you through it — no pressure, just answers." data-pt="Rafaela pode explicar tudo — sem pressão, apenas respostas." data-es="Rafaela puede guiarle — sin presión, solo respuestas.">Rafaela can walk you through it — no pressure, just answers.</p>
+      </div>
+      <div class="sq-help-actions">
+        <a href="tel:9792139729" class="sq-btn-call">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span data-en="Call Me" data-pt="Me Ligar" data-es="Llámame">Call Me</span>
+        </a>
+        <button class="sq-btn-quote" onclick="openModal()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <span data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">Get a Free Quote</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOR BUSINESS -->
+<section class="business" id="business">
+  <div class="si">
+    <span class="eyebrow reveal" data-en="For Business Owners" data-pt="Para Empresários" data-es="Para Dueños de Negocios">For Business Owners</span>
+    <h2 class="sh reveal" data-en="Your business deserves<br>an agent who takes it seriously." data-es="Su negocio merece<br>un agente que lo tome en serio." data-pt="Seu negócio merece<br>um corretor que leva isso a sério.">Your business deserves<br>an agent who takes it seriously.</h2>
+    <p class="sp reveal" data-en="Running a business is hard enough. CARVA makes sure the coverage side is handled — with the right policies, the right carriers, and someone who actually understands what you've built." data-pt="Administrar um negócio já é difícil. A CARVA garante que a parte dos seguros esteja resolvida — com as apólices certas, as seguradoras certas e alguém que entende o que você construiu." data-es="Administrar un negocio ya es suficientemente difícil. CARVA se asegura de que la parte de los seguros esté cubierta — con las pólizas correctas, las aseguradoras correctas y alguien que entiende lo que ha construido.">Running a business is hard enough. CARVA makes sure the coverage side is handled — with the right policies, the right carriers, and someone who actually understands what you've built.</p>
+    <div class="biz-grid">
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <p class="biz-title" data-en="General Liability" data-pt="Responsabilidade Civil" data-es="Responsabilidad Civil General">General Liability</p>
+        <p class="biz-body" data-en="Protects your business from third-party claims for property damage, bodily injury, and more. The foundation of every solid business policy." data-pt="Protege seu negócio contra reclamações de terceiros por danos materiais, lesões corporais e mais. A base de toda apólice empresarial sólida." data-es="Protege su negocio de reclamaciones de terceros por daños a la propiedad, lesiones y más. La base de toda póliza empresarial sólida.">Protects your business from third-party claims for property damage, bodily injury, and more. The foundation of every solid business policy.</p>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <p class="biz-title" data-en="Business Owner's Policy" data-pt="Apólice do Empresário (BOP)" data-es="Póliza del Empresario (BOP)">Business Owner's Policy</p>
+        <p class="biz-body" data-en="A BOP bundles general liability and commercial property into one smart, cost-effective package — ideal for small and mid-size businesses." data-pt="O BOP combina responsabilidade civil e patrimônio comercial em um pacote inteligente e econômico — ideal para pequenas e médias empresas." data-es="El BOP combina responsabilidad civil y propiedad comercial en un paquete inteligente y económico — ideal para pequeñas y medianas empresas.">A BOP bundles general liability and commercial property into one smart, cost-effective package — ideal for small and mid-size businesses.</p>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p class="biz-title" data-en="Workers' Compensation" data-pt="Seguro de Acidentes de Trabalho" data-es="Compensación Laboral">Workers' Compensation</p>
+        <p class="biz-body" data-en="Protects your employees and your business when someone gets hurt on the job. Required in most states — and we make sure you're fully compliant." data-pt="Protege seus funcionários e seu negócio quando alguém se machuca no trabalho. Exigido na maioria dos estados — e garantimos que você esteja em total conformidade." data-es="Protege a sus empleados y su negocio cuando alguien se lastima en el trabajo. Requerido en la mayoría de los estados — y nos aseguramos de que esté en total cumplimiento.">Protects your employees and your business when someone gets hurt on the job. Required in most states — and we make sure you're fully compliant.</p>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <p class="biz-title" data-en="Commercial Auto" data-pt="Auto Comercial" data-es="Auto Comercial">Commercial Auto</p>
+        <p class="biz-body" data-en="If your business uses vehicles — yours or your employees' — a personal auto policy won't cover it. We make sure your fleet is properly protected." data-pt="Se seu negócio usa veículos — seus ou dos funcionários — uma apólice pessoal não cobre. Garantimos que sua frota esteja devidamente protegida." data-es="Si su negocio usa vehículos — suyos o de sus empleados — una póliza personal no lo cubrirá. Nos aseguramos de que su flota esté debidamente protegida.">If your business uses vehicles — yours or your employees' — a personal auto policy won't cover it. We make sure your fleet is properly protected.</p>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <p class="biz-title" data-en="Professional Liability" data-pt="Responsabilidade Profissional" data-es="Responsabilidad Profesional">Professional Liability</p>
+        <p class="biz-body" data-en="Also known as E&amp;O insurance. Essential for service-based businesses, consultants, and anyone whose advice or work could be questioned." data-pt="Também conhecido como seguro E&amp;O. Essencial para empresas de serviços, consultores e qualquer pessoa cujo conselho ou trabalho possa ser questionado." data-es="También conocido como seguro E&amp;O. Esencial para empresas de servicios, consultores y cualquier persona cuyo consejo o trabajo pueda ser cuestionado.">Also known as E&amp;O insurance. Essential for service-based businesses, consultants, and anyone whose advice or work could be questioned.</p>
+      </div>
+      <div class="biz-card reveal">
+        <div class="biz-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <p class="biz-title" data-en="Commercial Umbrella" data-pt="Cobertura Guarda-Chuva Comercial" data-es="Paraguas Comercial">Commercial Umbrella</p>
+        <p class="biz-body" data-en="When the unexpected is bigger than your base policy, umbrella coverage steps in. A smart, affordable layer of extra protection for your business assets." data-pt="Quando o inesperado é maior que sua apólice base, a cobertura guarda-chuva entra em ação. Uma camada inteligente e acessível de proteção extra para seus ativos empresariais." data-es="Cuando lo inesperado supera su póliza base, la cobertura paraguas entra en acción. Una capa inteligente y asequible de protección extra para los activos de su negocio.">When the unexpected is bigger than your base policy, umbrella coverage steps in. A smart, affordable layer of extra protection for your business assets.</p>
+      </div>
+    </div>
+    <div style="margin-top:44px;background:var(--ink);border-radius:18px;padding:36px 40px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;" class="reveal">
+      <div style="flex:1;min-width:220px">
+        <p style="font-weight:800;font-size:1rem;color:white;margin-bottom:6px;letter-spacing:-0.01em" data-en="We've seen what happens when business owners are underinsured." data-pt="Já vimos o que acontece quando empresários estão mal segurados." data-es="Hemos visto lo que pasa cuando los dueños de negocios están mal asegurados.">We've seen what happens when business owners are underinsured.</p>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,.45);line-height:1.75" data-en="CARVA's job is to make sure that never happens to you. We review your coverage every year and adjust as your business grows." data-pt="O trabalho da CARVA é garantir que isso nunca aconteça com você. Revisamos sua cobertura todo ano e ajustamos conforme seu negócio cresce." data-es="El trabajo de CARVA es asegurarse de que eso nunca le pase. Revisamos su cobertura cada año y la ajustamos conforme su negocio crece.">CARVA's job is to make sure that never happens to you. We review your coverage every year and adjust as your business grows.</p>
+      </div>
+      <button class="btn-white" onclick="openModal()" style="background:var(--red);color:white;box-shadow:0 4px 16px rgba(217,48,37,.3);flex-shrink:0" data-en="Talk to an Agent" data-pt="Falar com um Corretor" data-es="Hablar con un Agente">
+        Talk to an Agent
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL COVERAGE -->
+<section class="services" id="services">
+  <div class="si">
+    <span class="eyebrow reveal" data-en="Personal Coverage" data-pt="Cobertura Pessoal" data-es="Cobertura Personal">Personal Coverage</span>
+    <h2 class="sh reveal" data-en="Protecting you and<br>everyone you love." data-es="Protegiéndolo a usted y<br>a todos los que ama." data-pt="Protegendo você e<br>todos que você ama.">Protecting you and<br>everyone you love.</h2>
+    <p class="sp reveal" data-en="From your car to your home to your family's future — CARVA finds the right coverage at the right price, and explains every detail before you sign a thing." data-pt="Do seu carro à sua casa ao futuro da sua família — a CARVA encontra a cobertura certa pelo preço certo, e explica cada detalhe antes de você assinar qualquer coisa." data-es="Desde su auto hasta su hogar y el futuro de su familia — CARVA encuentra la cobertura correcta al precio correcto, y explica cada detalle antes de que firme nada.">From your car to your home to your family's future — CARVA finds the right coverage at the right price, and explains every detail before you sign a thing.</p>
+    <div class="srv-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <p class="srv-title" data-en="Auto Insurance" data-pt="Seguro de Automóvel" data-es="Seguro de Auto">Auto Insurance</p>
+        <p class="srv-body" data-en="We compare rates across top carriers and find the best policy for how you actually drive. Annual reviews to make sure you're never overpaying." data-pt="Comparamos tarifas entre as principais seguradoras e encontramos a melhor apólice para como você realmente dirige. Revisões anuais para garantir que você nunca pague mais do que deve." data-es="Comparamos tarifas entre las principales aseguradoras y encontramos la mejor póliza para cómo usted maneja. Revisiones anuales para que nunca pague de más.">We compare rates across top carriers and find the best policy for how you actually drive. Annual reviews to make sure you're never overpaying.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <p class="srv-title" data-en="Home Insurance" data-pt="Seguro Residencial" data-es="Seguro de Hogar">Home Insurance</p>
+        <p class="srv-body" data-en="We walk through every line of your homeowner's policy so you know exactly what's covered — and exactly what's not. No surprises at claim time." data-pt="Revisamos cada linha da sua apólice residencial para que você saiba exatamente o que está coberto — e o que não está. Sem surpresas na hora do sinistro." data-es="Revisamos cada línea de su póliza de propietario para que sepa exactamente qué está cubierto — y qué no. Sin sorpresas al momento de reclamar.">We walk through every line of your homeowner's policy so you know exactly what's covered — and exactly what's not. No surprises at claim time.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7"/></svg></div>
+        <p class="srv-title" data-en="Umbrella Insurance" data-pt="Seguro Guarda-Chuva" data-es="Seguro Paraguas">Umbrella Insurance</p>
+        <p class="srv-body" data-en="Extra liability coverage above and beyond your auto and home policies. One of the best values in insurance — and most people don't know they need it." data-pt="Cobertura extra de responsabilidade civil além das suas apólices de auto e residencial. Um dos melhores valores em seguros — e a maioria das pessoas não sabe que precisa." data-es="Cobertura de responsabilidad extra más allá de sus pólizas de auto y hogar. Uno de los mejores valores en seguros — y la mayoría de las personas no sabe que lo necesita.">Extra liability coverage above and beyond your auto and home policies. One of the best values in insurance — and most people don't know they need it.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <p class="srv-title" data-en="Life Insurance" data-pt="Seguro de Vida" data-es="Seguro de Vida">Life Insurance</p>
+        <p class="srv-body" data-en="The most important — and most personal — conversation in insurance. We have it with care, patience, and zero pressure. Your family's future, protected." data-pt="A conversa mais importante — e mais pessoal — em seguros. A temos com cuidado, paciência e zero pressão. O futuro da sua família, protegido." data-es="La conversación más importante — y más personal — en seguros. La tenemos con cuidado, paciencia y cero presión. El futuro de su familia, protegido.">The most important — and most personal — conversation in insurance. We have it with care, patience, and zero pressure. Your family's future, protected.</p>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D93025" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5"/><path d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.961-1.45-2.344-2.5"/><path d="M8 14v.5A3.5 3.5 0 0 0 11.5 18h1a3.5 3.5 0 0 0 3.5-3.5V14a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2z"/><path d="M9.5 11c.17-.1 1.216-.19 2.5-.19s2.23.09 2.5.19"/></svg></div>
+        <p class="srv-title" data-en="Pet Insurance" data-pt="Seguro Pet" data-es="Seguro de Mascotas">Pet Insurance</p>
+        <p class="srv-body" data-en="Your pets are family too. We help you find the right coverage so unexpected vet bills never force an impossible choice. Plans for dogs, cats, and more." data-pt="Seus pets também são família. Ajudamos você a encontrar a cobertura certa para que contas veterinárias inesperadas nunca forcem uma escolha impossível. Planos para cães, gatos e mais." data-es="Sus mascotas también son familia. Le ayudamos a encontrar la cobertura correcta para que las facturas veterinarias inesperadas nunca lo pongan en una situación imposible. Planes para perros, gatos y más.">Your pets are family too. We help you find the right coverage so unexpected vet bills never force an impossible choice. Plans for dogs, cats, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="si">
+    <span class="eyebrow reveal" data-en="Client Reviews" data-pt="Avaliações de Clientes" data-es="Reseñas de Clientes">Client Reviews</span>
+    <h2 class="sh reveal" data-en="Don't take our word for it." data-pt="Não acredite apenas na nossa palavra." data-es="No se fíe solo de nuestra palabra.">Don't take our word for it.</h2>
+    <p class="sp reveal" data-en="Real clients. Real stories. Real protection." data-pt="Clientes reais. Histórias reais. Proteção real." data-es="Clientes reales. Historias reales. Protección real.">Real clients. Real stories. Real protection.</p>
+    <div class="testi-grid"></div>
+  </div>
+</section>
+
+<!-- BLOG POST READER -->
+<div class="post-overlay" id="postOverlay">
+  <nav class="post-nav">
+    <button class="post-back" onclick="closePost()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span id="postBackLabel">Back to Blog</span>
+    </button>
+    <button class="post-cta-top" onclick="closePost();openModal()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <span id="postCtaLabel">Get a Free Quote</span>
+    </button>
+  </nav>
+  <div class="post-wrap">
+    <span class="post-tag" id="postTag"></span>
+    <h1 class="post-title" id="postTitle"></h1>
+    <div class="post-meta">
+      <div class="post-author">
+        <div class="post-author-avatar">RC</div>
+        <span>Rafaela Carvalho</span>
+      </div>
+      <span class="post-meta-dot"></span>
+      <span id="postDate"></span>
+      <span class="post-meta-dot"></span>
+      <span id="postRead">5 min read</span>
+    </div>
+    <div class="post-body" id="postBody"></div>
+    <div class="post-footer">
+      <div class="post-footer-text">
+        <p id="postFooterH">Ready to review your coverage?</p>
+        <p id="postFooterP">CARVA shops the market for you — no pressure, just answers.</p>
+      </div>
+      <button class="post-footer-btn" onclick="closePost();openModal()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span id="postFooterBtn">Get a Free Quote</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG -->
+<section style="background:var(--off);padding:100px 52px;" id="blog">
+  <div class="si">
+    <span class="eyebrow reveal" data-en="Insurance Insights" data-pt="Dicas de Seguros" data-es="Consejos de Seguros">Insurance Insights</span>
+    <h2 class="sh reveal" data-en="Learn before you buy." data-pt="Aprenda antes de contratar." data-es="Aprenda antes de comprar.">Learn before you buy.</h2>
+    <p class="sp reveal" data-en="Practical guides on commercial, pet, and life insurance — written by people who answer these questions every day." data-pt="Guias práticos sobre seguros comerciais, pet e de vida — escritos por quem responde essas perguntas todo dia." data-es="Guías prácticas sobre seguros comerciales, de mascotas y de vida — escritas por personas que responden estas preguntas a diario.">Practical guides on commercial, pet, and life insurance — written by people who answer these questions every day.</p>
+    <div id="blogGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:52px;"></div>
+    <div id="blogPagination" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:44px;flex-wrap:wrap;"></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2 class="cta-h reveal" data-en="Ready to see what<br>you've been missing?" data-es="¿Listo para ver lo que<br>se ha estado perdiendo?" data-pt="Pronto para ver o que<br>você tem perdido?">Ready to see what<br>you've been missing?</h2>
+      <p class="cta-p reveal" data-en="A free, no-obligation review takes 15 minutes. We'll compare your current coverage against the market and tell you honestly what we find — even if the answer is that you're already in great shape." data-pt="Uma revisão gratuita e sem compromisso leva 15 minutos. Compararemos sua cobertura atual com o mercado e diremos honestamente o que encontrarmos — mesmo que a resposta seja que você já está bem protegido." data-es="Una revisión gratuita y sin compromiso toma 15 minutos. Compararemos su cobertura actual con el mercado y le diremos honestamente lo que encontremos — incluso si ya está bien protegido.">A free, no-obligation review takes 15 minutes. We'll compare your current coverage against the market and tell you honestly what we find — even if the answer is that you're already in great shape.</p>
+    </div>
+    <div class="cta-actions reveal">
+      <button class="btn-white" onclick="openModal()" style="background:white;color:var(--red)" data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">
+        Get a Free Quote
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="footer-top">
+      <div class="fb">
+        <div class="fb-row">
+          <svg width="52" height="52" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 12px rgba(217,48,37,0.35))">
+            <rect x="6" y="4" width="60" height="60" rx="17" fill="rgba(217,48,37,0.18)"/>
+            <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.25)" stroke-width="1.5"/>
+            <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+            <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div style="display:flex;flex-direction:column;line-height:1.15">
+            <span class="fb-wm">CARVA</span>
+            <span style="font-size:0.58rem;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:0.1em;text-transform:uppercase">Insurance Agency</span>
+          </div>
+        </div>
+        <p class="fb-desc" data-en="We shop the market, advise honestly, and stay in your corner through every claim." data-pt="Pesquisamos o mercado, aconselhamos com honestidade e ficamos ao seu lado em cada sinistro." data-es="Buscamos en el mercado, asesoramos con honestidad y estamos a su lado en cada reclamación.">We shop the market, advise honestly, and stay in your corner through every claim.</p>
+      </div>
+      <div class="fc">
+        <h4 data-en="Coverage" data-pt="Cobertura" data-es="Cobertura">Coverage</h4>
+        <a href="#services" data-en="Auto Insurance" data-pt="Seguro de Automóvel" data-es="Seguro de Auto">Auto Insurance</a>
+        <a href="#services" data-en="Home Insurance" data-pt="Seguro Residencial" data-es="Seguro de Hogar">Home Insurance</a>
+        <a href="#services" data-en="Life Insurance" data-pt="Seguro de Vida" data-es="Seguro de Vida">Life Insurance</a>
+        <a href="#services" data-en="Pet Insurance" data-pt="Seguro Pet" data-es="Seguro de Mascotas">Pet Insurance</a>
+        <a href="#services" data-en="Umbrella" data-pt="Guarda-Chuva" data-es="Paraguas">Umbrella</a>
+      </div>
+      <div class="fc">
+        <h4 data-en="Quote Online" data-pt="Cotação Online" data-es="Cotización Online">Quote Online</h4>
+        <a href="https://track.nextinsurance.com/links?agent_affiliation=42hdT3yMil7FA1pR&serial=992855993&channel=affiliation" target="_blank" data-en="General Liability (NEXT)" data-pt="Resp. Civil (NEXT)" data-es="Resp. Civil (NEXT)">General Liability (NEXT)</a>
+        <a href="https://link.thimble.com/broker/F3R6S3S7ZC" target="_blank" data-en="General Liability (Thimble)" data-pt="Resp. Civil (Thimble)" data-es="Resp. Civil (Thimble)">General Liability (Thimble)</a>
+        <a href="https://www.fetchpet.com/mypet?a=FC29908&utm_source=firstconnect&utm_medium=brokerportal&utm_campaign=firstconnect_email&c=firstconnect&p=firstconnect" target="_blank" data-en="Pet Insurance (Fetch)" data-pt="Seguro Pet (Fetch)" data-es="Seg. Mascotas (Fetch)">Pet Insurance (Fetch)</a>
+        <a href="https://partner.insuretax.com/initial-assessment?rid=rafaelacarvalho" target="_blank" data-en="IRS Audit Insurance" data-pt="Seguro Auditoria IRS" data-es="Seguro Auditoría IRS">IRS Audit Insurance</a>
+      </div>
+      <div class="fc">
+        <h4 data-en="For Business" data-pt="Para Empresas" data-es="Para Empresas">For Business</h4>
+        <a href="#business" data-en="General Liability" data-pt="Responsabilidade Civil" data-es="Responsabilidad Civil">General Liability</a>
+        <a href="#business" data-en="Business Owner's Policy" data-pt="Apólice do Empresário" data-es="Póliza del Empresario">Business Owner's Policy</a>
+        <a href="#business" data-en="Workers' Comp" data-pt="Acidentes de Trabalho" data-es="Compensación Laboral">Workers' Comp</a>
+        <a href="#business" data-en="Commercial Auto" data-pt="Auto Comercial" data-es="Auto Comercial">Commercial Auto</a>
+      </div>
+      <div class="fc">
+        <h4 data-en="Contact" data-pt="Contato" data-es="Contacto">Contact</h4>
+        <a href="tel:9792139729">(979) 213-9729</a>
+        <a href="/cdn-cgi/l/email-protection#c5bcaab0b7a4a2a0abb185a6a4b7b3a4acabb6b0b7a4aba6a0a4a2a0aba6bceba6aaa8"><span class="__cf_email__" data-cfemail="146d7b61667573717a605477756662757d7a676166757a77717573717a776d3a777b79">[email&#160;protected]</span></a>
+        <a href="https://instagram.com/carvainsuranceagency" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@carvainsuranceagency</a>
+        <a href="javascript:void(0)" onclick="openModal()" style="color:#D93025;font-weight:700" data-en="Get a Free Quote →" data-pt="Cotação Grátis →" data-es="Cotización Gratis →">Get a Free Quote →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CARVA Insurance Agency. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="handleOverlay(event)">
+  <div class="modal">
+    <div class="m-head" id="mHead">
+      <div class="m-topbar"></div>
+      <div class="m-logo">
+        <svg width="48" height="48" viewBox="0 0 72 72" fill="none" style="filter:drop-shadow(0 4px 12px rgba(217,48,37,0.4))">
+          <rect x="6" y="4" width="60" height="60" rx="17" fill="rgba(217,48,37,0.22)"/>
+          <rect x="6" y="4" width="60" height="60" rx="17" fill="none" stroke="rgba(217,48,37,0.3)" stroke-width="1.5"/>
+          <path d="M36 54C36 54 14 40 14 26C14 19 20 15 26 15C30.5 15 34 17.5 36 21C38 17.5 41.5 15 46 15C52 15 58 19 58 26C58 40 36 54 36 54Z" fill="#D93025"/>
+          <path d="M27 30L33 37L45 23" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div style="display:flex;flex-direction:column;line-height:1.15">
+          <span class="m-wm">CARVA</span>
+          <span style="font-size:0.55rem;font-weight:600;color:rgba(255,255,255,.38);letter-spacing:0.1em;text-transform:uppercase">Insurance Agency</span>
+        </div>
+      </div>
+      <p class="m-title" data-en="Get a Free Quote" data-pt="Cotação Grátis" data-es="Cotización Gratis">Get a Free Quote</p>
+      <p class="m-sub" data-en="&quot;We&apos;ll call you back at a time that works for you.&quot;" data-pt="&quot;Retornaremos sua ligação no horário que for melhor para você.&quot;" data-es="&quot;Lo llamaremos a la hora que mejor le convenga.&quot;">"We'll call you back at a time that works for you."</p>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-body" id="mForm">
+      <div class="f-row">
+        <div class="fg">
+          <label class="fl"><span data-en="First Name" data-pt="Nome" data-es="Nombre">First Name</span> <span class="req">*</span></label>
+          <input type="text" class="fi-input" id="fname" placeholder="John" autocomplete="given-name">
+        </div>
+        <div class="fg">
+          <label class="fl"><span data-en="Last Name" data-pt="Sobrenome" data-es="Apellido">Last Name</span> <span class="req">*</span></label>
+          <input type="text" class="fi-input" id="lname" placeholder="Smith" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl"><span data-en="Phone Number" data-pt="Telefone" data-es="Número de Teléfono">Phone Number</span> <span class="req">*</span></label>
+        <input type="tel" class="fi-input" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
+      </div>
+      <div class="fg">
+        <label class="fl"><span data-en="Email Address" data-pt="E-mail" data-es="Correo Electrónico">Email Address</span> <span class="req">*</span></label>
+        <input type="email" class="fi-input" id="email" placeholder="your@email.com" autocomplete="email">
+      </div>
+      <div class="fg">
+        <label class="fl"><span data-en="Business Name" data-pt="Nome da Empresa" data-es="Nombre del Negocio">Business Name</span> &nbsp;<span class="opt" data-en="(optional)" data-pt="(opcional)" data-es="(opcional)">(optional)</span></label>
+        <input type="text" class="fi-input" id="biz" placeholder="e.g. Smith Construction LLC" autocomplete="organization">
+      </div>
+      <div class="fg">
+        <label class="fl"><span data-en="Best Time to Call" data-pt="Melhor Horário para Ligar" data-es="Mejor Hora para Llamar">Best Time to Call</span> <span class="req">*</span></label>
+        <select class="fi-select" id="calltime">
+          <option value="" disabled selected data-en="Select a time window..." data-pt="Selecione um horário..." data-es="Seleccione un horario...">Select a time window...</option>
+          <option data-en="Morning — 8 AM to 12 PM" data-pt="Manhã — 8h às 12h" data-es="Mañana — 8 AM a 12 PM">Morning — 8 AM to 12 PM</option>
+          <option data-en="Afternoon — 12 PM to 5 PM" data-pt="Tarde — 12h às 17h" data-es="Tarde — 12 PM a 5 PM">Afternoon — 12 PM to 5 PM</option>
+          <option data-en="Evening — 5 PM to 7 PM" data-pt="Noite — 17h às 19h" data-es="Noche — 5 PM a 7 PM">Evening — 5 PM to 7 PM</option>
+          <option data-en="Anytime works for me" data-pt="Qualquer horário" data-es="Cualquier hora me viene bien">Anytime works for me</option>
+        </select>
+      </div>
+      <button class="f-submit" onclick="submitForm()" data-en="Request My Free Quote →" data-pt="Solicitar Cotação Grátis →" data-es="Solicitar Mi Cotización Gratis →">Request My Free Quote →</button>
+      <p class="f-note" data-en="We'll be in touch within one business day. No spam, no obligation — ever." data-pt="Entraremos em contato em até um dia útil. Sem spam, sem obrigação — jamais." data-es="Nos pondremos en contacto dentro de un día hábil. Sin spam, sin obligación — nunca.">We'll be in touch within one business day. No spam, no obligation — ever.</p>
+    </div>
+    <div class="m-thanks" id="mThanks">
+      <div style="width:72px;height:72px;background:#FEF2F1;border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 0 0 8px rgba(217,48,37,0.07);">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <path d="M20 33C20 33 6 24 6 14.5C6 10 9.5 7 13.5 7C16.2 7 18.5 8.8 20 11C21.5 8.8 23.8 7 26.5 7C30.5 7 34 10 34 14.5C34 24 20 33 20 33Z" fill="#D93025"/>
+          <path d="M13.5 20.5L17.5 24.5L26.5 15.5" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p style="font-size:0.57rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#6A6A6A;margin-bottom:12px;font-family:'Plus Jakarta Sans',sans-serif;" id="tyBrand">CARVA INSURANCE AGENCY</p>
+      <p style="font-weight:800;font-size:1.45rem;color:#111;margin-bottom:14px;letter-spacing:-0.03em;font-family:'Plus Jakarta Sans',sans-serif;" id="tyTitle">Request Received</p>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:0.92rem;color:#555;line-height:1.72;max-width:310px;margin:0 auto 18px;" id="tySub">&ldquo;We&rsquo;ll be in touch within one business day to go over your options &mdash; no pressure, just answers.&rdquo;</p>
+      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:0.92rem;color:#3A3A3A;margin-bottom:20px;" id="tyName">&mdash; Rafaela Carvalho</p>
+      <div style="width:36px;height:2.5px;background:#D93025;border-radius:2px;margin:0 auto 20px;"></div>
+      <p style="font-size:0.78rem;color:#6A6A6A;font-family:'Plus Jakarta Sans',sans-serif;" id="tyContact">Questions? Call <a href="tel:9792139729" style="color:#D93025;font-weight:700;text-decoration:none;">(979) 213&ndash;9729</a></p>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── LANGUAGE SYSTEM ──
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  ['en','pt','es'].forEach(l => {
+    const d = document.getElementById('btn-' + l);
+    const m = document.getElementById('mob-btn-' + l);
+    if (d) d.classList.toggle('active', lang === l);
+    if (m) m.classList.toggle('active', lang === l);
+  });
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (!text) return;
+    if (el.tagName === 'BUTTON' && el.querySelector('svg')) {
+      const svg = el.querySelector('svg').outerHTML;
+      el.innerHTML = text + ' ' + svg;
+    } else if (el.tagName === 'SELECT') {
+    } else {
+      el.innerHTML = text;
+    }
+  });
+  document.querySelectorAll('select option[data-' + lang + ']').forEach(opt => {
+    opt.textContent = opt.getAttribute('data-' + lang);
+  });
+  document.documentElement.lang = lang;
+  renderReviews();
+  if (typeof renderBlog === 'function') renderBlog();
+}
+
+// ── ROTATING REVIEWS ──
+const allReviews = [
+  {quote_en:'"I had been with my old carrier for 8 years and assumed I had a good deal. CARVA found me the same coverage for $400 less a year. The process took 20 minutes."',quote_pt:'"Estava com minha seguradora antiga há 8 anos e achei que tinha um bom negócio. A CARVA me encontrou a mesma cobertura por $400 a menos por ano. O processo levou 20 minutos."',quote_es:'"Llevaba 8 años con mi aseguradora y creía que tenía un buen trato. CARVA me encontró la misma cobertura por $400 menos al año. El proceso tomó 20 minutos."',name:'Michael Roberts',loc_en:'Dallas, TX · Auto & Home',loc_pt:'Dallas, TX · Auto e Residencial',loc_es:'Dallas, TX · Auto y Hogar',initials:'MR',color:'#D93025'},
+  {quote_en:'"When my car was totaled, I didn\'t have to figure anything out alone. CARVA filed everything with me, called the carrier on my behalf, and kept me updated the whole way through."',quote_pt:'"Quando meu carro foi destruído, não precisei resolver nada sozinha. A CARVA registrou tudo comigo, ligou para a seguradora em meu nome e me manteve atualizada o tempo todo."',quote_es:'"Cuando mi auto fue declarado pérdida total, no tuve que resolver nada sola. CARVA registró todo conmigo, llamó a la aseguradora en mi nombre y me mantuvo informada en todo momento."',name:'Jennifer Walsh',loc_en:'Orlando, FL · Auto Insurance',loc_pt:'Orlando, FL · Seguro de Auto',loc_es:'Orlando, FL · Seguro de Auto',initials:'JW',color:'#1A6B3C'},
+  {quote_en:'"As a small business owner I had no idea what coverage I actually needed. CARVA audited my existing policies, found two gaps, and saved me money at the same time. Incredible."',quote_pt:'"Como pequeno empresário, não sabia que cobertura eu realmente precisava. A CARVA auditou minhas apólices existentes, encontrou duas lacunas e ainda economizou dinheiro para mim. Incrível."',quote_es:'"Como dueño de un pequeño negocio, no sabía qué cobertura necesitaba. CARVA auditó mis pólizas, encontró dos vacíos y me ahorró dinero al mismo tiempo. ¡Increíble!"',name:'David Chen',loc_en:'Houston, TX · Business Insurance',loc_pt:'Houston, TX · Seguro Empresarial',loc_es:'Houston, TX · Seguro de Negocio',initials:'DC',color:'#B45309'},
+  {quote_en:'"Rafaela explained every detail of my life insurance policy clearly and patiently. I finally feel like I understand what I have — and my family is protected. Thank you CARVA."',quote_pt:'"Rafaela explicou cada detalhe da minha apólice de vida com clareza e paciência. Finalmente entendo o que tenho — e minha família está protegida. Obrigada CARVA."',quote_es:'"Rafaela explicó cada detalle de mi póliza de vida con claridad y paciencia. Por fin entiendo lo que tengo — y mi familia está protegida. Gracias CARVA."',name:'Ana Gonzalez',loc_en:'Houston, TX · Life Insurance',loc_pt:'Houston, TX · Seguro de Vida',loc_es:'Houston, TX · Seguro de Vida',initials:'AG',color:'#7C3AED'},
+  {quote_en:'"I called three other agents before CARVA. None of them took the time to actually understand my situation. Rafaela spent an hour with me and got me covered the same day."',quote_pt:'"Liguei para três outros corretores antes da CARVA. Nenhum deles se dedicou a entender minha situação. Rafaela passou uma hora comigo e me cobriu no mesmo dia."',quote_es:'"Llamé a tres agentes antes de CARVA. Ninguno se tomó el tiempo de entender mi situación. Rafaela pasó una hora conmigo y me dejó cubierto el mismo día."',name:'Carlos Medina',loc_en:'Miami, FL · Auto & Home',loc_pt:'Miami, FL · Auto e Residencial',loc_es:'Miami, FL · Auto y Hogar',initials:'CM',color:'#0369A1'},
+  {quote_en:'"My home insurance was about to expire and I had no idea what to do. CARVA handled everything within 24 hours and saved me over $600 compared to my old policy."',quote_pt:'"Meu seguro residencial estava prestes a vencer e eu não sabia o que fazer. A CARVA resolveu tudo em 24 horas e me economizou mais de $600 comparado à minha apólice anterior."',quote_es:'"Mi seguro de hogar estaba por vencer y no sabía qué hacer. CARVA resolvió todo en 24 horas y me ahorró más de $600 comparado con mi póliza anterior."',name:'Patricia Silva',loc_en:'Austin, TX · Home Insurance',loc_pt:'Austin, TX · Seguro Residencial',loc_es:'Austin, TX · Seguro de Hogar',initials:'PS',color:'#BE185D'}
+];
+
+function pickReviews() {
+  return [...allReviews].sort(() => Math.random() - 0.5).slice(0, 3);
+}
+
+function renderReviews() {
+  const grid = document.querySelector('.testi-grid');
+  if (!grid) return;
+  const picks = pickReviews();
+  const lang = currentLang;
+  grid.innerHTML = picks.map(r => `
+    <div class="tc reveal">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-quote">${r['quote_' + lang] || r.quote_en}</p>
+      <div class="tc-person">
+        <div class="tc-avatar" style="background:${r.color}">${r.initials}</div>
+        <div>
+          <p class="tc-name">${r.name}</p>
+          <p class="tc-loc">${r['loc_' + lang] || r.loc_en}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.addEventListener('DOMContentLoaded', renderReviews);
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── MOBILE MENU ──
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ── MODAL ──
+function openModal() {
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.querySelectorAll('.modal [data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + currentLang) || el.getAttribute('data-en');
+    if (!text) return;
+    if (el.tagName === 'BUTTON' && el.querySelector('svg')) {
+      const svg = el.querySelector('svg').outerHTML;
+      el.innerHTML = text + ' ' + svg;
+    } else if (el.tagName !== 'SELECT') {
+      el.innerHTML = text;
+    }
+  });
+  document.querySelectorAll('.modal select option').forEach(opt => {
+    const text = opt.getAttribute('data-' + currentLang) || opt.getAttribute('data-en');
+    if (text) opt.textContent = text;
+  });
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function() {
+    ['fname','lname','phone','email','biz'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) { el.value = ''; el.style.borderColor = ''; el.style.boxShadow = ''; }
+    });
+    var sel = document.getElementById('calltime');
+    if (sel) sel.selectedIndex = 0;
+    var mForm = document.getElementById('mForm');
+    var mHead = document.getElementById('mHead');
+    var mThanks = document.getElementById('mThanks');
+    if (mForm)   mForm.style.display   = '';
+    if (mHead)   mHead.style.display   = '';
+    if (mThanks) mThanks.style.display = 'none';
+    var btn = document.querySelector('.f-submit');
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = currentLang === 'pt' ? 'Solicitar Cotação Grátis →' : currentLang === 'es' ? 'Solicitar Mi Cotización Gratis →' : 'Request My Free Quote →';
+    }
+  }, 350);
+}
+function handleOverlay(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); } });
+
+// ── FORM ──
+async function submitForm() {
+  var required = ['fname','lname','phone','email','calltime'];
+  var ok = true;
+  required.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el || !el.value.trim()) {
+      if (el) {
+        el.style.borderColor = '#D93025';
+        el.style.boxShadow = '0 0 0 3px rgba(217,48,37,.1)';
+        el.addEventListener('input', function() { el.style.borderColor = ''; el.style.boxShadow = ''; }, { once: true });
+      }
+      ok = false;
+    }
+  });
+  if (!ok) return;
+  var btn = document.querySelector('.f-submit');
+  var origText = btn ? btn.textContent : '';
+  if (btn) { btn.disabled = true; btn.textContent = currentLang === 'pt' ? 'Enviando...' : currentLang === 'es' ? 'Enviando...' : 'Sending...'; }
+  var lang = currentLang;
+  var fd = new FormData();
+  fd.append('First Name', document.getElementById('fname').value.trim());
+  fd.append('Last Name', document.getElementById('lname').value.trim());
+  fd.append('Phone', document.getElementById('phone').value.trim());
+  fd.append('Email', document.getElementById('email').value.trim());
+  fd.append('Business Name', document.getElementById('biz').value.trim() || 'N/A');
+  fd.append('Best Time to Call', document.getElementById('calltime').value);
+  fd.append('Language', lang === 'pt' ? 'Portuguese' : lang === 'es' ? 'Spanish' : 'English');
+  fd.append('_subject', 'New Quote Request — CARVA Insurance Agency');
+  fd.append('_captcha', 'false');
+  fd.append('_template', 'table');
+  fd.append('_next', 'about:blank');
+  try {
+    await fetch('https://formsubmit.co/ajax/rafaela_carvalho88@hotmail.com', { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+  } catch (err) { console.warn('Form submission error:', err); }
+  var titleEl = document.getElementById('tyTitle');
+  var subEl = document.getElementById('tySub');
+  var nameEl = document.getElementById('tyName');
+  var ctEl = document.getElementById('tyContact');
+  if (lang === 'pt') {
+    if (titleEl) titleEl.textContent = 'Solicitação Recebida';
+    if (subEl) subEl.innerHTML = '\u201cEntraremos em contato em até um dia útil para analisar suas opções \u2014 sem pressão, apenas respostas.\u201d';
+    if (nameEl) nameEl.innerHTML = '\u2014 Rafaela Carvalho';
+    if (ctEl) ctEl.innerHTML = 'Dúvidas? Ligue para <a href="tel:9792139729" style="color:#D93025;font-weight:700;text-decoration:none;">(979) 213\u20139729</a>';
+  } else if (lang === 'es') {
+    if (titleEl) titleEl.textContent = 'Solicitud Recibida';
+    if (subEl) subEl.innerHTML = '\u201cNos pondremos en contacto dentro de un día hábil para revisar sus opciones \u2014 sin presión, solo respuestas.\u201d';
+    if (nameEl) nameEl.innerHTML = '\u2014 Rafaela Carvalho';
+    if (ctEl) ctEl.innerHTML = '¿Preguntas? Llame al <a href="tel:9792139729" style="color:#D93025;font-weight:700;text-decoration:none;">(979) 213\u20139729</a>';
+  } else {
+    if (titleEl) titleEl.textContent = 'Request Received';
+    if (subEl) subEl.innerHTML = '\u201cWe\u2019ll be in touch within one business day to go over your options \u2014 no pressure, just answers.\u201d';
+    if (nameEl) nameEl.innerHTML = '\u2014 Rafaela Carvalho';
+    if (ctEl) ctEl.innerHTML = 'Questions? Call <a href="tel:9792139729" style="color:#D93025;font-weight:700;text-decoration:none;">(979) 213\u20139729</a>';
+  }
+  document.getElementById('mForm').style.display = 'none';
+  document.getElementById('mHead').style.display = 'none';
+  document.getElementById('mThanks').style.display = 'block';
+  if (btn) { btn.disabled = false; btn.textContent = origText; }
+}
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── BLOG ──
+const BLOG_POSTS = [
+  {tag_en:'Commercial Insurance',tag_pt:'Seguro Comercial',tag_es:'Seguro Comercial',title_en:'How to Lower Your Business Insurance Premium Without Cutting Coverage',title_pt:'Como Reduzir o Prêmio do Seguro Empresarial Sem Cortar Cobertura',title_es:'Cómo Reducir la Prima del Seguro Empresarial Sin Recortar Cobertura',excerpt_en:"There are legitimate ways to reduce what you pay without unnecessary risk. Here are the strategies CARVA uses when reviewing every commercial policy.",excerpt_pt:'Existem maneiras legítimas de reduzir o que você paga sem expor seu negócio. Veja as estratégias que a CARVA usa.',excerpt_es:'Hay formas legítimas de reducir lo que paga sin riesgos. Estas son las estrategias que usa CARVA.',date:'November 3, 2025',key:'lower-business-premium'},
+  {tag_en:'Life Insurance',tag_pt:'Seguro de Vida',tag_es:'Seguro de Vida',title_en:"Can You Get Life Insurance With a Pre-Existing Condition?",title_pt:'Você Pode Conseguir Seguro de Vida com uma Condição Pré-Existente?',title_es:'¿Puede Obtener Seguro de Vida con una Condición Preexistente?',excerpt_en:"Diabetes, high blood pressure, past cancer — harder to insure does not mean impossible. Here are the options that actually exist.",excerpt_pt:'Diabetes, pressão alta, câncer anterior — mais difícil não significa impossível. Veja as opções que realmente existem.',excerpt_es:'Diabetes, presión alta, cáncer pasado — más difícil no significa imposible. Estas son las opciones reales.',date:'October 20, 2025',key:'life-insurance-preexisting'},
+  {tag_en:'Pet Insurance',tag_pt:'Seguro Pet',tag_es:'Seguro de Mascotas',title_en:'The Top 5 Pet Insurance Mistakes New Pet Owners Make',title_pt:'Os 5 Principais Erros de Seguro Pet que Novos Donos Cometem',title_es:'Los 5 Principales Errores de Seguro de Mascotas',excerpt_en:"From enrolling too late to picking the wrong deductible, these mistakes cost pet owners thousands. Here is how to avoid every one.",excerpt_pt:'Desde esperar muito até escolher a franquia errada, esses erros custam milhares. Veja como evitar cada um.',excerpt_es:'Desde esperar demasiado hasta elegir el deducible incorrecto, estos errores cuestan miles. Cómo evitar cada uno.',date:'October 6, 2025',key:'pet-insurance-mistakes'},
+  {tag_en:'Commercial Insurance',tag_pt:'Seguro Comercial',tag_es:'Seguro Comercial',title_en:'Cyber Liability Insurance for Small Businesses: Do You Really Need It?',title_pt:'Seguro Cibernético para Pequenas Empresas: Você Realmente Precisa?',title_es:'Seguro Cibernético para Pequeñas Empresas: ¿Lo Necesita?',excerpt_en:"A data breach does not only hit big companies. If you store any customer data, you could be liable. Here is what cyber coverage actually does.",excerpt_pt:'Uma violação de dados não acontece apenas com grandes empresas. Se você armazena dados de clientes, pode ser responsabilizado.',excerpt_es:'Una brecha de datos no solo les ocurre a grandes empresas. Si almacena datos de clientes, podría ser responsable.',date:'September 22, 2025',key:'cyber-liability-small-business'},
+  {tag_en:'Home Insurance',tag_pt:'Seguro Residencial',tag_es:'Seguro de Hogar',title_en:"What Your Homeowner's Policy Actually Covers — And 4 Things It Doesn't",title_pt:'O Que Sua Apólice Residencial Cobre — E 4 Coisas Que Não Cobre',title_es:'Lo Que Realmente Cubre Su Póliza de Hogar — Y 4 Cosas Que No',excerpt_en:"Most homeowners have never read their policy. We break down the coverage line by line — including the gaps that catch people off guard at claim time.",excerpt_pt:'A maioria dos proprietários nunca leu sua apólice. Explicamos linha por linha — incluindo as lacunas que pegam pessoas de surpresa.',excerpt_es:'La mayoría nunca ha leído su póliza. Explicamos línea por línea — incluyendo las brechas que sorprenden a la hora del reclamo.',date:'September 8, 2025',key:'homeowners-policy-coverage'},
+  {tag_en:'Life Insurance',tag_pt:'Seguro de Vida',tag_es:'Seguro de Vida',title_en:'Life Insurance for Parents: Protect Your Kids Without Overcomplicating It',title_pt:'Seguro de Vida para Pais: Proteja Seus Filhos Sem Complicar',title_es:'Seguro de Vida para Padres: Proteja a Sus Hijos Sin Complicarlo',excerpt_en:"If you have children, life insurance is one of the most important financial decisions you will ever make. Here is how to get it right.",excerpt_pt:'Se você tem filhos, o seguro de vida é uma das decisões financeiras mais importantes. Veja como acertar.',excerpt_es:'Si tiene hijos, el seguro de vida es una de las decisiones financieras más importantes. Así es cómo hacerlo bien.',date:'August 25, 2025',key:'life-insurance-parents'},
+  {tag_en:'Pet Insurance',tag_pt:'Seguro Pet',tag_es:'Seguro de Mascotas',title_en:'What Pet Insurance Actually Pays Out — A Real Claims Breakdown',title_pt:'O Que o Seguro Pet Realmente Paga — Um Exemplo Real',title_es:'Lo Que el Seguro de Mascotas Realmente Paga — Ejemplo Real',excerpt_en:"Reimbursement rates, deductibles, and annual limits are confusing. Here is exactly how a real claim works, step by step, with actual numbers.",excerpt_pt:'Taxas de reembolso, franquias e limites anuais podem ser confusos. Veja como funciona um sinistro real passo a passo.',excerpt_es:'Las tasas de reembolso y deducibles son confusos. Así es cómo funciona un reclamo real, con números reales.',date:'August 11, 2025',key:'pet-insurance-claims'},
+  {tag_en:'Auto Insurance',tag_pt:'Seguro de Automóvel',tag_es:'Seguro de Auto',title_en:"How to Make Sure You're Not Overpaying for Auto Insurance",title_pt:'Como Garantir Que Você Não Está Pagando a Mais pelo Seguro de Auto',title_es:'Cómo Asegurarse de No Estar Pagando de Más por su Seguro de Auto',excerpt_en:"Most drivers stay with the same carrier for years out of habit — and pay the price for it. An independent agent finds you a better rate in under 20 minutes.",excerpt_pt:'A maioria dos motoristas fica com a mesma seguradora por hábito — e paga o preço. Um corretor independente encontra uma tarifa melhor em menos de 20 minutos.',excerpt_es:'La mayoría se queda con la misma aseguradora por costumbre. Un agente independiente le encuentra una mejor tarifa en menos de 20 minutos.',date:'July 28, 2025',key:'overpaying-auto-insurance'},
+  {tag_en:'Umbrella Insurance',tag_pt:'Seguro Guarda-Chuva',tag_es:'Seguro Paraguas',title_en:'Umbrella Insurance: The Most Underrated Coverage in Personal Insurance',title_pt:'Seguro Guarda-Chuva: A Cobertura Mais Subestimada dos Seguros Pessoais',title_es:'Seguro Paraguas: La Cobertura Más Subestimada en Seguros Personales',excerpt_en:"For a few hundred dollars a year, umbrella insurance adds a million dollars or more of extra liability protection. Most people do not realize they need it.",excerpt_pt:'Por algumas centenas de dólares por ano, o seguro guarda-chuva adiciona um milhão ou mais em proteção. A maioria não percebe que precisa.',excerpt_es:'Por unos pocos cientos de dólares al año, el seguro paraguas agrega un millón o más de protección. La mayoría no se da cuenta de que lo necesita.',date:'July 14, 2025',key:'umbrella-insurance-underrated'},
+  {tag_en:'Commercial Insurance',tag_pt:'Seguro Comercial',tag_es:'Seguro Comercial',title_en:'What Is a Certificate of Insurance — and Why Do Clients Keep Asking?',title_pt:'O Que É um Certificado de Seguro e Por Que Seus Clientes Pedem?',title_es:'¿Qué Es un Certificado de Seguro y Por Qué lo Piden los Clientes?',excerpt_en:"If you run a service business, you will be asked for a COI constantly. Here is what it is, how to get one fast, and what to do when a client wants you added.",excerpt_pt:'Se você tem um negócio de serviços, será solicitado um COI constantemente. Veja o que é e como obtê-lo rápido.',excerpt_es:'Si dirige un negocio de servicios, le pedirán un COI constantemente. Qué es, cómo obtenerlo y qué hacer cuando un cliente lo pide.',date:'June 30, 2025',key:'certificate-of-insurance'},
+  {tag_en:'Life Insurance',tag_pt:'Seguro de Vida',tag_es:'Seguro de Vida',title_en:"Life Insurance for Self-Employed People: What's Different",title_pt:'Seguro de Vida para Autônomos: O Que É Diferente',title_es:'Seguro de Vida para Trabajadores Independientes: Qué Es Diferente',excerpt_en:"Without employer group coverage, the responsibility is entirely yours. The good news: self-employed people often have more flexibility and meaningful tax advantages.",excerpt_pt:'Sem cobertura de grupo do empregador, a responsabilidade é sua. A boa notícia: autônomos têm mais flexibilidade — e vantagens fiscais.',excerpt_es:'Sin cobertura de grupo del empleador, la responsabilidad es suya. La buena noticia: más flexibilidad y ventajas fiscales.',date:'June 16, 2025',key:'life-insurance-self-employed'},
+  {tag_en:'Commercial Insurance',tag_pt:'Seguro Comercial',tag_es:'Seguro Comercial',title_en:"Commercial Auto vs. Personal Auto: Why Your Regular Policy Won't Cover Work Driving",title_pt:'Auto Comercial vs. Pessoal: Por Que Sua Apólice Pessoal Não Cobre o Trabalho',title_es:'Auto Comercial vs. Personal: Por Qué Su Póliza Personal No Cubre el Trabajo',excerpt_en:"If you or an employee gets in an accident while driving for work, a personal auto policy will almost certainly deny the claim. Here is what you actually need.",excerpt_pt:'Se você ou um funcionário sofrer um acidente a trabalho, uma apólice pessoal quase certamente negará o sinistro.',excerpt_es:'Si tiene un accidente mientras conduce por trabajo, una póliza personal casi con certeza rechazará el reclamo.',date:'May 19, 2025',key:'commercial-auto-vs-personal'},
+  {tag_en:'Pet Insurance',tag_pt:'Seguro Pet',tag_es:'Seguro de Mascotas',title_en:'Dog vs. Cat Insurance: Are the Costs and Coverages Really That Different?',title_pt:'Seguro para Cão vs. Gato: Os Custos São Realmente Tão Diferentes?',title_es:'Seguro para Perro vs. Gato: ¿Los Costos Son Tan Diferentes?',excerpt_en:"Breed, age, and species all affect your premium significantly. Here is a side-by-side look at what to expect insuring dogs vs. cats.",excerpt_pt:'Raça, idade e espécie afetam significativamente o prêmio. Veja o que esperar ao segurar cães vs. gatos.',excerpt_es:'La raza, la edad y la especie afectan significativamente su prima. Una comparación de lo que puede esperar.',date:'May 5, 2025',key:'dog-vs-cat-insurance'},
+  {tag_en:"Workers' Compensation",tag_pt:'Seguro de Acidentes de Trabalho',tag_es:'Compensación Laboral',title_en:"Workers' Comp: Do You Need It Even With Just One Employee?",title_pt:"Seguro de Acidentes: Você Precisa com Apenas Um Funcionário?",title_es:"Compensación Laboral: ¿La Necesita con un Solo Empleado?",excerpt_en:"In most states, the answer is yes — from the moment you hire your first employee. We break down the rules and what happens if you skip it.",excerpt_pt:'Na maioria dos estados, a resposta é sim. Explicamos as regras por estado e o que acontece se você ignorar.',excerpt_es:'En la mayoría de los estados, la respuesta es sí. Explicamos las reglas estado por estado y las consecuencias.',date:'April 21, 2025',key:'workers-comp-one-employee'},
+  {tag_en:'Home Insurance',tag_pt:'Seguro Residencial',tag_es:'Seguro de Hogar',title_en:"Renters Insurance: Why Every Tenant Needs It and How Little It Costs",title_pt:'Seguro para Locatários: Por Que Todo Inquilino Precisa e Quanto Custa',title_es:'Seguro para Inquilinos: Por Qué Todo Arrendatario lo Necesita',excerpt_en:"Most renters assume their landlord's insurance covers them — it does not. Renters insurance protects your belongings for often less than $20 a month.",excerpt_pt:'A maioria dos inquilinos assume que o seguro do proprietário os cobre. Não cobre. O seguro para locatários protege seus bens por menos de $20 por mês.',excerpt_es:'La mayoría asume que el seguro del propietario los cubre. No es así. El seguro para inquilinos protege sus bienes por menos de $20 al mes.',date:'April 7, 2025',key:'renters-insurance'},
+  {tag_en:'Life Insurance',tag_pt:'Seguro de Vida',tag_es:'Seguro de Vida',title_en:'Term vs. Whole Life Insurance: Which One Is Actually Right for You?',title_pt:'Seguro a Prazo vs. Vitalício: Qual É o Certo para Você?',title_es:'Seguro a Término vs. Permanente: ¿Cuál Es el Correcto?',excerpt_en:"The difference between term and whole life can mean tens of thousands of dollars over time. Here is a plain-language breakdown to help you choose.",excerpt_pt:'A diferença entre seguro a prazo e vitalício pode significar dezenas de milhares de dólares. Explicamos em linguagem simples.',excerpt_es:'La diferencia puede significar decenas de miles de dólares. Una explicación clara para ayudarle a elegir.',date:'March 24, 2025',key:'term-vs-whole-life'},
+  {tag_en:'Pet Insurance',tag_pt:'Seguro Pet',tag_es:'Seguro de Mascotas',title_en:'The Best Age to Get Pet Insurance — And Why Waiting Costs You More',title_pt:'A Melhor Idade para Contratar Seguro Pet',title_es:'La Mejor Edad para Contratar Seguro de Mascotas',excerpt_en:"Pre-existing conditions are the single biggest catch in pet insurance. The earlier you enroll your pet, the more you save — and the better your coverage.",excerpt_pt:'Condições pré-existentes são a maior armadilha do seguro pet. Quanto mais cedo você contrata, mais economiza.',excerpt_es:'Las condiciones preexistentes son la mayor trampa. Cuanto antes lo contrate, más ahorrará y mejor cobertura tendrá.',date:'March 10, 2025',key:'best-age-pet-insurance'},
+  {tag_en:'Commercial Insurance',tag_pt:'Seguro Comercial',tag_es:'Seguro Comercial',title_en:"What Is a Business Owner's Policy (BOP) — and Does Your Business Need One?",title_pt:'O Que É uma Apólice do Empresário (BOP)?',title_es:'¿Qué Es una Póliza del Empresario (BOP)?',excerpt_en:"A BOP bundles general liability and commercial property into one cost-effective policy. Here is how to know if it is the right fit for your business.",excerpt_pt:'O BOP combina responsabilidade civil e patrimônio comercial em uma apólice econômica. Veja como saber se é a escolha certa.',excerpt_es:'Un BOP combina responsabilidad civil y propiedad comercial en una póliza económica. Descubra si es la opción correcta.',date:'February 24, 2025',key:'what-is-bop'},
+  {tag_en:'Auto Insurance',tag_pt:'Seguro de Automóvel',tag_es:'Seguro de Auto',title_en:'Switching Auto Insurance: When It Makes Sense and How to Do It Right',title_pt:'Trocar de Seguro de Auto: Quando Faz Sentido e Como Fazer Certo',title_es:'Cambiar de Seguro de Auto: Cuándo Tiene Sentido y Cómo Hacerlo',excerpt_en:"Switching carriers is easier than most people think — and the savings can be significant. Here is a step-by-step guide so you never have a gap in coverage.",excerpt_pt:'Trocar de seguradora é mais fácil do que a maioria pensa — e a economia pode ser significativa. Veja como fazer sem lacunas na cobertura.',excerpt_es:'Cambiar de aseguradora es más fácil de lo que la mayoría cree. Una guía paso a paso para nunca quedar sin cobertura.',date:'February 10, 2025',key:'switching-auto-insurance'},
+  {tag_en:'General Liability',tag_pt:'Responsabilidade Civil',tag_es:'Responsabilidad Civil',title_en:'General Liability Insurance: What It Covers and Why Every Business Needs It',title_pt:'Responsabilidade Civil: O Que Cobre e Por Que Todo Negócio Precisa',title_es:'Responsabilidad Civil: Qué Cubre y Por Qué Todo Negocio la Necesita',excerpt_en:"General liability is the foundation of every solid business insurance portfolio. Here is what it protects against — and what it does not — in plain language.",excerpt_pt:'A responsabilidade civil é a base de todo portfólio de seguros empresariais. Veja o que ela protege — e o que não protege — em linguagem simples.',excerpt_es:'La responsabilidad civil es la base de todo portafolio de seguros empresariales. Aquí está qué protege — y qué no — en lenguaje claro.',date:'January 27, 2025',key:'general-liability-explained'}
+];
+
+const BLOG_PER = 6;
+let blogPage = 1;
+
+function renderBlog() {
+  var grid = document.getElementById('blogGrid');
+  var pag = document.getElementById('blogPagination');
+  if (!grid) return;
+  var lang = currentLang;
+  var start = (blogPage - 1) * BLOG_PER;
+  var posts = BLOG_POSTS.slice(start, start + BLOG_PER);
+  var html = '';
+  for (var i = 0; i < posts.length; i++) {
+    var p = posts[i];
+    var tag = p['tag_' + lang] || p.tag_en;
+    var title = p['title_' + lang] || p.title_en;
+    var excerpt = p['excerpt_' + lang] || p.excerpt_en;
+    var readLabel = lang === 'pt' ? '5 min de leitura' : lang === 'es' ? '5 min de lectura' : '5 min read';
+    html += '<div class="blog-card">';
+    html += '<div class="blog-stripe"></div>';
+    html += '<div class="blog-body">';
+    html += '<span class="blog-tag">' + tag + '</span>';
+    html += '<p class="blog-title">' + title + '</p>';
+    html += '<p class="blog-excerpt">' + excerpt + '</p>';
+    html += '<div class="blog-meta"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ' + p.date + ' <span class="blog-dot"></span> ' + readLabel + '</div>';
+    html += '<button class="blog-cta" onclick="openPost(' + (i + (blogPage-1)*BLOG_PER) + ')">' + (lang==='pt'?'Ler artigo completo':lang==='es'?'Leer artículo completo':'Read full article') + ' \u2192</button>';
+    html += '</div></div>';
+  }
+  grid.innerHTML = html;
+  var total = Math.ceil(BLOG_POSTS.length / BLOG_PER);
+  var pagHtml = '';
+  for (var n = 1; n <= total; n++) {
+    pagHtml += '<button class="blog-pg' + (n === blogPage ? ' active' : '') + '" onclick="goBlogPage(' + n + ')" style="background:white;border:1.5px solid var(--mist);border-radius:100px;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:0.74rem;font-weight:700;color:var(--ink-soft);cursor:pointer;">' + n + '</button>';
+  }
+  pag.innerHTML = pagHtml;
+}
+
+function goBlogPage(n) {
+  blogPage = n;
+  renderBlog();
+  document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
+}
+
+document.addEventListener('DOMContentLoaded', function() { renderBlog(); });
+
+// ── POST BODIES (condensed — key posts only, others use generic fallback) ──
+var POST_BODIES = {"lower-business-premium":{en:"<p>If you own a business in Florida or Texas, you know insurance isn't cheap. Here's how to lower your premium <strong>without</strong> putting your business at risk.</p><h2>1. Bundle your policies into a BOP</h2><p>A Business Owner's Policy combines general liability and commercial property into a single package — often 15–25% cheaper than two separate policies.</p><h2>2. Increase your deductible strategically</h2><p>Raising your deductible from $500 to $2,500 on a commercial property policy can drop your premium by 10–20% — if you have reserves to cover it.</p><h2>3. Review your classification codes</h2><p>Every business is assigned industry codes that directly affect your premium. These can be wrong. CARVA audits this every time we review a policy.</p><h2>4. Ask about safety discounts</h2><p>Carriers reward businesses with clean loss histories and documented safety programs. If you've gone 3+ years without a claim, ask specifically about those credits.</p><h2>5. Re-shop at every renewal — with an independent agent</h2><p>The single most effective thing you can do is have a CARVA agent re-quote your coverage across multiple carriers at every renewal.</p><div class='callout'><strong>CARVA tip:</strong> If you haven't had your commercial policy reviewed in the past 12 months, you may be leaving real money on the table. Call us for a free audit — no obligation.</div>",pt:"<p>Existem maneiras legítimas de reduzir o que você paga sem expor seu negócio. Veja as principais estratégias.</p><h2>1. Agrupe suas apólices em uma BOP</h2><p>Uma BOP combina responsabilidade civil e patrimônio comercial — geralmente 15–25% mais barato do que duas apólices separadas.</p><h2>2. Aumente sua franquia estrategicamente</h2><p>Elevar sua franquia pode reduzir seu prêmio em 10–20% se você tiver reservas suficientes.</p><div class='callout'><strong>Dica CARVA:</strong> Se você não revisou sua apólice nos últimos 12 meses, pode estar perdendo dinheiro. Ligue para uma auditoria gratuita.</div>",es:"<p>Hay formas legítimas de reducir lo que paga sin riesgos. Estas son las estrategias que usa CARVA.</p><h2>1. Agrupe sus pólizas en una BOP</h2><p>Una BOP combina responsabilidad civil y propiedad comercial — generalmente 15–25% más barato que dos pólizas separadas.</p><div class='callout'><strong>Consejo CARVA:</strong> Si no ha revisado su póliza comercial en los últimos 12 meses, puede estar dejando dinero sobre la mesa.</div>"}};
+
+// Generic fallback for posts not in POST_BODIES
+function getPostBody(key, lang) {
+  if (POST_BODIES[key]) return POST_BODIES[key][lang] || POST_BODIES[key].en;
+  var p = BLOG_POSTS.find(function(x){ return x.key === key; });
+  if (!p) return '<p>Article content coming soon.</p>';
+  return '<p>' + (p['excerpt_'+lang] || p.excerpt_en) + '</p><div class="callout"><strong>Want to learn more?</strong> Call Rafaela at (979) 213-9729 or request a free quote above — she answers every question personally.</div>';
+}
+
+function openPost(idx) {
+  var p = BLOG_POSTS[idx];
+  if (!p) return;
+  var lang = currentLang;
+  document.getElementById('postTag').textContent = p['tag_'+lang] || p.tag_en;
+  document.getElementById('postTitle').textContent = p['title_'+lang] || p.title_en;
+  document.getElementById('postDate').textContent = p.date;
+  document.getElementById('postRead').textContent = lang==='pt'?'5 min de leitura':lang==='es'?'5 min de lectura':'5 min read';
+  document.getElementById('postBody').innerHTML = getPostBody(p.key, lang);
+  document.getElementById('postBackLabel').textContent = lang==='pt'?'Voltar ao Blog':lang==='es'?'Volver al Blog':'Back to Blog';
+  document.getElementById('postCtaLabel').textContent = lang==='pt'?'Cotação Grátis':lang==='es'?'Cotización Gratis':'Get a Free Quote';
+  document.getElementById('postFooterH').textContent = lang==='pt'?'Pronto para revisar sua cobertura?':lang==='es'?'¿Listo para revisar su cobertura?':'Ready to review your coverage?';
+  document.getElementById('postFooterP').textContent = lang==='pt'?'A CARVA pesquisa o mercado para você — sem pressão, apenas respostas.':lang==='es'?'CARVA busca el mercado para usted — sin presión, solo respuestas.':'CARVA shops the market for you — no pressure, just answers.';
+  document.getElementById('postFooterBtn').textContent = lang==='pt'?'Cotação Grátis':lang==='es'?'Cotización Gratis':'Get a Free Quote';
+  var overlay = document.getElementById('postOverlay');
+  overlay.classList.add('open');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closePost() {
+  document.getElementById('postOverlay').classList.remove(
